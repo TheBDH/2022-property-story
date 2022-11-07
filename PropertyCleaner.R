@@ -23,6 +23,7 @@ for (i in 1:(length(api_endpoints))){
   temp_df <- renamefrom(temp_df, cw_file=Mapper, raw=Original, clean=clean, label=label)
   
   # Index assumes we're starting from 2002
+  # TODO before Wednesday: handle 2007 data
   
   temp_df$DATAYEAR <- rep(toString(i+2001), nrow(temp_df))
   output_df <- rbind(output_df, temp_df)
