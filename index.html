@@ -3,6 +3,7 @@
   <title>Property</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://use.typekit.net/mxr8glf.css">
+  <script src="./jquery-3.6.1.min.js"></script>
 </head>
 
 <body>
@@ -11,6 +12,7 @@
 
     <div id="headline-wrapper">
       <h1>Brown's Property Impact on College Hill</h1>
+      <h2>1763 to today</h2>
     </div>
 
 
@@ -31,7 +33,22 @@
 
 
   <div id="content"></div>
-  <div id="footer"></div>
+  <div id="footer">
+
+    <div style="display: flex; flex-direction: row; color: black; justify-content: center;">
+      <p style="font-size: 1.18rem">Copyright © 2022 The Brown Daily Herald, Inc.&nbsp;•&nbsp;</p>
+      <button id="to-top" style="font-family: freight-text-pro, serif; font-size: 1.18rem;">Back to top</button>
+    </div>
+
+    <script>
+      $("#to-top").click(function () {
+        $("html, body").animate({scrollTop: 0}, 1000);
+      });
+    </script>
+
+
+
+  </div>
 </body>
 
 </html>

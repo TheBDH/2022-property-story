@@ -4,8 +4,19 @@ body{
   background-color: #F5F3EF;
 }
 
+div{
+  outline: 2px solid red;
+}
+
 h1, h2, h3, h4{
   font-family: freight-display-pro; sans-serif;
+}
+
+h1{
+  font-size: 3rem;
+}
+h2{
+  font-size: 2.2rem;
 }
 
 p{
@@ -21,6 +32,7 @@ p{
 
 #headline-wrapper{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-left: 10vw;
@@ -34,4 +46,25 @@ p{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#to-top {
+  border-style: none;
+  background-color: transparent;
+  color: black;
+  padding: 0;
+  text-decoration: underline;
+}
+
+#to-top:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }
