@@ -1,1 +1,37 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #F5F3EF;
+}
 
+h1, h2, h3, h4{
+  font-family: freight-display-pro; sans-serif;
+}
+
+p{
+  font-family: freight-text-pro, sans-serif;
+}
+#header{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#headline-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  text-align: center;
+}
+
+#byline{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
