@@ -2,10 +2,9 @@ body{
   margin: 0;
   padding: 0;
   background-color: #F5F3EF;
-}
+  background-image: url("totally-legit-background.svg");
+  background-size: cover;
 
-div{
-  outline: 2px solid red;
 }
 
 h1, h2, h3, h4{
@@ -32,6 +31,8 @@ p{
 
 #headline-wrapper{
   display: flex;
+  background-color: rgba(245, 243, 239, 0.7);
+  border: 1px solid darkred;
   flex-direction: column;
   align-items: center;
   justify-content: center;
