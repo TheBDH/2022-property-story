@@ -1,3 +1,15 @@
+:root {
+  --red: #ED1803;
+  --offwhite: #F5F3EF;
+  --black: #000000;
+}
+
+@font-face {
+  font-family: Lora-Pixel;
+  src: url(LoraPixel.ttf);
+  font-weight: bold;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -84,4 +96,9 @@ p{
 #to-top:hover{
   opacity: 0.5;
   cursor: pointer;
+}
+
+
+#logo {
+  width: 10vw;
 }
