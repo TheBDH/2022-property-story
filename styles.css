@@ -79,7 +79,7 @@ p{
 
 #footer{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -100,5 +100,5 @@ p{
 
 
 #logo {
-  width: 10vw;
+  width: 20vw;
 }
