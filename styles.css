@@ -2,11 +2,12 @@
   --red: #ED1803;
   --offwhite: #F5F3EF;
   --black: #000000;
+  --brown: #8D5124;
 }
 
 @font-face {
   font-family: Lora-Pixel;
-  src: url(LoraPixel.ttf);
+  src: url(./fonts/LoraPixel.ttf);
   font-weight: bold;
 }
 
@@ -20,25 +21,30 @@ body{
 }
 
 h1, h2, h3, h4{
-  font-family: freight-display-pro; sans-serif;
+  font-family: freight-display-pro, sans-serif;
 }
 
 h1{
-  font-size: 3rem;
+  font-family: Lora-Pixel;
+  font-size: 5rem;
+  color: var(--red);
 }
 h2{
   font-size: 2.2rem;
 }
 
-p{
-  font-family: freight-text-pro, sans-serif;
-}
 #header{
   display: flex;
   height: 100vh;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.byline {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  justify-content: center;
 }
 
 #headline-wrapper{
@@ -49,6 +55,7 @@ p{
   padding-left: 10vw;
   padding-right: 10vw;
   text-align: center;
+  max-width: 900px;
 }
 
 #curtains{
