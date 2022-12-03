@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "PembrokeField",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "ass_land": "1995600", "shape_area": "77979.3831529", "area_ac": "1.76000918", "owner_add": null, "propid": "013-0040-0000", "tax_year": null, "area_sf": "43560", "parc_add": "449 Brook St", "shape_leng": "1136.45847777", "owner_city": "Providence", "ass_bldg": "613000", "ownerstate": "RI", "cama_link": "130040", "lot": "40", "plat": "13", "owner_ctry": null, "ass_total": "2638000", "unit": null, "ownername": "Brown University", "owner_zip": "02906" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -71.39828667481359, 41.829417048106855 ], [ -71.399531174508112, 41.829312828020768 ], [ -71.399531181659029, 41.829312873944311 ], [ -71.399624248665617, 41.830057292384943 ], [ -71.399624249828619, 41.830057318495761 ], [ -71.398762238849841, 41.830118753793961 ], [ -71.398762179849498, 41.830118762745343 ], [ -71.398762167849824, 41.830118738425604 ], [ -71.39828667481359, 41.829417048106855 ] ] ] ] } }
+]
+}

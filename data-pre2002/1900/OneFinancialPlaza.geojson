@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "OneFinancialPlaza",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "ass_land": "1880200", "shape_area": "23580.9534914", "area_ac": "0.54577594", "owner_add": null, "propid": "020-0005-0000", "tax_year": null, "area_sf": "23774", "parc_add": "1 Financial Plaza", "shape_leng": "633.016109658", "owner_city": "Scarsdale", "ass_bldg": "48136200", "ownerstate": "NY", "cama_link": "200005", "lot": "5", "plat": "20", "owner_ctry": null, "ass_total": "53050600", "unit": null, "ownername": "One Financial Holdings LLC.", "owner_zip": "10583" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -71.409606410311966, 41.825205323111057 ], [ -71.409606433210271, 41.825205303321624 ], [ -71.409922011049858, 41.82497570714812 ], [ -71.409922089218583, 41.824975758528765 ], [ -71.41042270834771, 41.825365346979574 ], [ -71.410104948011309, 41.825593245665139 ], [ -71.410104925113032, 41.825593265454685 ], [ -71.409606487270707, 41.825205378992671 ], [ -71.409606410311966, 41.825205323111057 ] ] ] ] } }
+]
+}
