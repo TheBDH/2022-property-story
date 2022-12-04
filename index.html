@@ -7,9 +7,16 @@
 </head>
 
 <body>
-  <div id="curtains"></div>
-  <div id="header">
+  <div id="debug-overlay"></div>
+  <div class="maps">
+    <div class="map map-roads"></div>
+    <object class="map map-1770" data="maps/1770.svg" type="image/svg+xml"></object>
+    <object class="map map-2022" data="maps/2022.svg" type="image/svg+xml"></object>
+  </div>
+  <div id="curtains">
 
+  </div>
+  <div id="header">
     <div>
       <a href="https://browndailyherald.com" style="align-self: center;">
         <img id="logo" src="https://d35jcxe8no8yhr.cloudfront.net/bd1083f144117cb1524cb7fc30c4765d/dist/img/logo-black.png" style="max-width: 32em; align-self: center; box-shadow: 0 0 0"></img>
@@ -24,20 +31,14 @@
       <p>Reporting by <b>Rhea Rasquina</b> and <b>Stella Chen</b></p>
       <p>Web design & layout by <b>Ashley Cai</b>, <b>Jed Fox</b> and <b>Neil Mehta</b></p>
     </div>
-
-    <div id="byline">
-      <hr style="width: 50vw;">
-      <br>
-    </div>
-
   </div>
 
 
 
-  <div id="content">
-    <p>Today, Brown owns over <a href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent property growth has concentrated in the Jewelry District, representing a new era of expansion for the University off College Hill and into downtown.</p>
+  <div id="content" style="margin-top: 100vh">
+    <p class="over-map">Today, Brown owns over <a href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent property growth has concentrated in the Jewelry District, representing a new era of expansion for the University off College Hill and into downtown.</p>
 
-    <p>But the campus wasn’t always so expansive.</p>
+    <p style="margin-top: 50vh" class="over-map">But the campus wasn’t always so expansive.</p>
 
     <hr>
 
@@ -167,6 +168,26 @@
     </div>
 
     <script>
+      document.addEventListener('scroll', () => {
+        const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
+        const value = (min, max) => (scroll - min) / (max - min);
+        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)}`);
+        if (scroll < 0.85) {
+          $('.map-2022').css('opacity', 0)
+        } else if (scroll < 1.3) {
+          $('.map-2022').css('opacity', value(0.85, 1.3))
+        } else if (scroll < 1.8) {
+          $('.map-2022').css('opacity', 1)
+          $('.map-1770').css('opacity', 0)
+        } else if (scroll < 2.5) {
+          $('.map-2022').css('opacity', 1 - value(1.8, 2.3))
+          $('.map-1770').css('opacity', value(1.8, 2.3))
+          $('.maps').css('transform', `scale(${1 + value(1.8, 2.3)}) translate3d(0, 0, 0)`)
+        } else {
+          $('.map-2022').css('opacity', 0)
+          $('.map-1770').css('opacity', 1)
+        }
+      })
       $("#to-top").click(function () {
         $("html, body").animate({scrollTop: 0}, 1000);
       });
