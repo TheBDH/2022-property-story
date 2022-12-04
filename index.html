@@ -201,9 +201,10 @@
           $('.map-2022').css('opacity', 1)
           $('.map-1770').css('opacity', 0)
         } else if (scroll < 2.5) {
-          $('.map-2022').css('opacity', 1 - value(1.8, 2.3))
-          $('.map-1770').css('opacity', value(1.8, 2.3))
-          $('.maps svg > g').attr('transform', `scale(${1 + value(1.8, 2.3)})`)
+          const s = value(1.8, 2.3)
+          $('.map-2022').css('opacity', 1 - s)
+          $('.map-1770').css('opacity', s)
+          $('.maps svg > g').attr('transform', `scale(${1 + s})` + ` translate(${s * 30}, ${s * -25})`)
         } else {
           $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', 1)
