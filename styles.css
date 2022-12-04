@@ -25,26 +25,21 @@ body {
   height: 100vh;
   z-index: -1;
 }
-.map {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100vh;
-  aspect-ratio: 0.8943089430895341;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  will-change: transform;
-}
-.map.map-roads {
-  background-image: url("maps/roads.svg");
-  opacity: 0.25;
-}
-.map.map-roads::after {
+.maps::after {
   content: '';
+  position: absolute;
+  top: 0;
   display: block;
   width: 100%; height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  aspect-ratio: 0.8943089430895341;
   background: linear-gradient(to right, #F5F3EF 0%, transparent 20%, transparent 80%, #F5F3EF 100%);
+}
+.maps svg {
+  width: 100%; height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4{
