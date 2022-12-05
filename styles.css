@@ -211,12 +211,7 @@ h2{
   color: var(--offwhite);
   background-color: var(--offblack);
   padding: 1.5em;
-<<<<<<< HEAD
-  margin-top: 60vh;
-=======
-  font-family: Arial, Helvetica, sans-serif;
   margin-top: 70vh;
->>>>>>> bbay
 }
 
 .map-link {
