@@ -57,8 +57,8 @@
     <p class="font-loader" id="font-loader6" style="font-family: Redaction6;">font loader</p>
 
     <div id="intro-section1" class="body-text">
-      <div id="intro-graph1">
-          <p>Today, Brown owns over <a href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent acquisitions have been concentrated in the Jewelry District, representing a new era of growth for the University off College Hill and into downtown.</p>
+      <div id="intro-graph1" class="over-map">
+          <p>Today, Brown owns over <a class="map-link" href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent acquisitions have been concentrated in the Jewelry District, representing a new era of growth for the University off College Hill and into downtown.</p>
           <p>But the campus wasn’t always so expansive.</p>
       </div>
       <p style="text-align:center">SCROLL &darr;</p>
@@ -78,31 +78,30 @@
 
 
 
-  <div id="content" style="margin-top: 100vh">
-    <p class="over-map">Today, Brown owns over <a href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent property growth has concentrated in the Jewelry District, representing a new era of expansion for the University off College Hill and into downtown.</p>
-
-    <p style="margin-top: 50vh" class="over-map">But the campus wasn’t always so expansive.</p>
-
-    <hr>
-
+  <div id="content">
+    <div class="over-map">
     <p>Below, The Herald has mapped the University’s property purchases and some of its sales from its founding in 1764 to its present-day footprint. Brown first owned property in 1770.</p>
 
     <p>The information comes from the Providence Public Library's atlas collection; the John Hay Library's special collections; Herald archives; the Providence Preservation Society's Most Endangered Properties lists; the Rhode Island State Archives in the office of the Department of State; the Brown Real Estate Office archives; the Providence Journal archives; and Encyclopedia Brunoniana. </p>
 
-    <p>The information below is imperfect, especially predating 2002, the first year Providence began publishing its complete <a href="https://data.providenceri.gov/browse?q=property+tax+roll">property tax rolls</a> online. The maps from 1764 to 2000 include many specific properties, but others can be considered best estimates for when the University purchased the land that new key buildings later stood upon. These maps likely miss a number of properties that we could not find in the archives. If you have a correction, addition or knowledge of when Brown acquired certain properties, please email Herald@BrownDailyHerald.com.</p>
+    <p>The information below is imperfect, especially predating 2002, the first year Providence began publishing its complete <a class="map-link" href="https://data.providenceri.gov/browse?q=property+tax+roll">property tax rolls</a> online. The maps from 1764 to 2000 include many specific properties, but others can be considered best estimates for when the University purchased the land that new key buildings later stood upon. These maps likely miss a number of properties that we could not find in the archives. If you have a correction, addition or knowledge of when Brown acquired certain properties, please email Herald@BrownDailyHerald.com.</p>
 
     <p>If you have a correction, addition or knowledge of when Brown acquired certain properties, please email Herald@BrownDailyHerald.com.</p>
+    </div>
 
-    <hr>
-
+    <div class="over-map">
     <p>The original campus was two adjacent lots spanning what is now the Quiet Green, Main Green and Ruth J. Simmons Quad. At this time there were no paved roads, so the true boundaries of campus may have not aligned exactly with its contemporary confines.</p>
+    </div>
 
-    <hr>
+    <div class="over-map">
     <p>Between 1770 and 1900, the outline of Brown’s campus beyond the Main Green began to take shape. The University bought the first building on what is now the Pembroke campus in 1897, acquired Pembroke Field, land on Thayer Street, and land that would become the Brown Stadium.</p>
-    <hr>
+    </div>
+
+    <div class="over-map">
     <p>The early 20th century saw campus expansion to make room for the Women’s College, later <a href="https://www.brown.edu/about/history/timeline/">renamed</a> Pembroke College. Sayles Gym — now Smith-Buonanno Hall — and much of the land that would become Andrews Hall were acquired by the University in this time frame.</p>
-    <hr>
-    <p>By 1960, the University’s two largest residential quads — Wriston and Keeney — were complete.</p>
+    </div>
+
+  <p>By 1960, the University’s two largest residential quads — Wriston and Keeney — were complete.</p>
     <p>Farview, Inc., a nonprofit corporation legal entity fully owned by the University, was incorporated in 1958. This subsidiary helped facilitate the purchase of properties that remained commercial or taxable, or later were demolished for future projects. The University also acquired the rest of the land that would eventually become the Life Sciences Quad and Barus and Holley — the plans for which led to a lengthy dispute with the city.</p>
     <p>“The issue,” President Barnaby Keeney told The Herald at the time, “is essentially whether Brown goes up in the air, spreads out more or stands still. We are quite prepared to operate under City policies that will permit us to go up or spread out. If the pressure on the University is to stand still, we shall have to resist.”</p>
     <hr>
@@ -216,7 +215,7 @@
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
-        const stages = [0.95, 1.3, 1.8, 2.5];
+        const stages = [0.95, 1.3, 1.8, 2.5, 3.1];
         let stage;
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
@@ -241,12 +240,15 @@
           break;
         case 2:
           $('.map-2022-tan').css('opacity', 1 - frac)
+          $('.map-1770').css('opacity', 0)
+          break;
+        case 3:
+          $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', frac)
           $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
           $('.maps svg > g').attr('transform', `scale(2) translate(30, ${-15 + frac * -10})`)
           break;
-        case 3:
-          $('.map-2022').css('opacity', 0)
+        case 4:
           $('.map-1770').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -25)`)
           $('#year').text('1770')
