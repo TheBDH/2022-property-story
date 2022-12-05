@@ -83,9 +83,10 @@ body {
   margin-top: 40vh !important;
 }
 
-.map > path{
+.map-properties path {
   fill: var(--red);
   stroke: var(--offwhite);
+  stroke-width: 0.2;
 }
 
 .map-2022-tan > path{
