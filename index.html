@@ -47,6 +47,14 @@
       </a>
     </div>
 
+    <p class="font-loader" id="font-loader1" style="font-family: Redaction1;">font loader</p>
+    <p class="font-loader" id="font-loader2" style="font-family: Redaction2;">font loader</p>
+    <p class="font-loader" id="font-loader3" style="font-family: Redaction3;">font loader</p>
+    <p class="font-loader" id="font-loader4" style="font-family: Redaction4;">font loader</p>
+    <p class="font-loader" id="font-loader5" style="font-family: Redaction5;">font loader</p>
+    <p class="font-loader" id="font-loader6" style="font-family: Redaction6;">font loader</p>
+    
+
     <div id="intro-section1" class="body-text">
       <div id="intro-graph1">
           <p>Today, Brown owns over 230 buildings in and around Providence. Recent acquisitions have been concentrated in the Jewelry District, representing a new era of growth for the University off College Hill and into downtown.</p>
@@ -213,13 +221,15 @@
         $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
         switch (stage) {
         case -1:
-          $('.map-2022').css('opacity', 0);
+          $('.map-2022').css('opacity', 1);
           $('.map-1770').css('opacity', 0);
           $('#year').css('opacity', 0);
+          $('.maps svg > g').attr('transform', `scale(2) translate(30, -15)`)
           break;
         case 0:
-          $('.map-2022').css('opacity', frac)
+          $('.map-2022').css('opacity', 1)
           $('#year').css('opacity', frac).text('2022')
+          $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
           break;
         case 1:
           $('.map-2022').css('opacity', 1)
@@ -228,8 +238,8 @@
         case 2:
           $('.map-2022').css('opacity', 1 - frac)
           $('.map-1770').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${1 + frac})` + ` translate(${frac * 30}, ${frac * -25})`)
           $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
+          $('.maps svg > g').attr('transform', `scale(2) translate(30, ${15 + frac * -10})`)
           break;
         case 3:
           $('.map-2022').css('opacity', 0)

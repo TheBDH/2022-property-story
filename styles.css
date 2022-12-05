@@ -48,16 +48,9 @@
   font-weight: bold;
 }
 
-@font-face {
-  font-family: Redaction7;
-  src: url(./fonts/Redaction_90-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction8;
-  src: url(./fonts/Redaction_80-Italic.woff2);
-  font-weight: bold;
+.font-loader {
+  opacity: 0;
+  height: 0;
 }
 
 body {
@@ -75,7 +68,7 @@ body {
   max-width: 650px;
   justify-content: center;
   margin: auto;
-  margin-top: 60vh;
+  margin-top: 50vh;
 
 }
 
