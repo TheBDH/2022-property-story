@@ -45,6 +45,10 @@
       </a>
     </div>
 
+    <div id="intro-graph1" class="body-text">
+        <p>Today, Brown owns over 230 buildings in and around Providence. Recent acquisitions have been concentrated in the Jewelry District, representing a new era of growth for the University off College Hill and into downtown.</p>
+        <p>But the campus wasn’t always so expansive.</p>
+    </div>
     <div id="headline-wrapper">
       <h1>How Brown University’s property footprint expanded: 1763 to now</h1>
     </div>
@@ -201,7 +205,7 @@
         $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
         switch (stage) {
         case -1:
-          $('.map-2022').css('opacity', 0);
+          $('.map-2022').css('opacity', 1);
           $('.map-1770').css('opacity', 0);
           $('#year').css('opacity', 0);
           break;
