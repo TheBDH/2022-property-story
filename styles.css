@@ -70,9 +70,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#intro-graph1 {
-  margin-top: 60vh;
+#intro-section1 {
+  margin-bottom: 30vh;
   max-width: 650px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 60vh;
+
+}
+
+#intro-graph1 {
   color: white;
   padding: 20px;
   background-color: var(--offblack);
@@ -122,11 +129,8 @@ h2{
 }
 
 #header{
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  padding-top: 10vh;
+  height: 300vh;
 }
 
 .byline {
@@ -136,14 +140,17 @@ h2{
 }
 
 #headline-wrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding-left: 10vw;
   padding-right: 10vw;
   text-align: center;
   max-width: 800px;
+  margin: auto;
+  padding-top: 10vh;
+}
+
+#sticky-header {
+  top: 0;
+  position: sticky;
 }
 
 #curtains{
@@ -193,9 +200,10 @@ h2{
   cursor: pointer;
 }
 
-
-#logo {
+#logo{
   width: 20vw;
+  display: block;
+  margin: auto;
 }
 
 p.over-map {
