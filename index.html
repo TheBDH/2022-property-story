@@ -213,7 +213,11 @@
       <button id="to-top" style="font-family: freight-text-pro, serif; font-size: 1.18rem;">Back to top</button>
     </div>
 
-    <script>
+    <script type="module">
+      import Color from './js/color.js';
+      const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
+      const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
+      const redToTan = colors.red.range(colors.tan, { space: 'lch', outputSpace: 'srgb' });
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
@@ -225,9 +229,8 @@
         $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
         switch (stage) {
         case -1:
-          $('.map-2022').css('opacity', 1);
+          $('.map-2022').css('opacity', 1).css('--fill', redToTan(frac));
           $('.map-1770').css('opacity', 0);
-          $('.map-2022-tan').css('opacity', frac)
           $('#year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -15)`)
           break;
@@ -237,11 +240,10 @@
           // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
           break;
         case 1:
-          $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', 0)
           break;
         case 2:
-          $('.map-2022-tan').css('opacity', 1 - frac)
+          $('.map-2022').css('opacity', 1 - frac)
           $('.map-1770').css('opacity', 0)
           break;
         case 3:

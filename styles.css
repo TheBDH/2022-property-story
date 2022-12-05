@@ -51,12 +51,12 @@
 
 @font-face {
   font-family: Lora;
-  src: url(./fonts/Lora-Regular.woff2);
+  src: url(./fonts/Lora-VariableFont_wght.ttf);
   font-weight: 400 700;
 }
 @font-face {
   font-family: Lora;
-  src: url(./fonts/Lora-Italic.woff2);
+  src: url(./fonts/Lora-Italic-VariableFont_wght.ttf);
   font-style: italic;
   font-weight: 400 700;
 }
@@ -84,13 +84,9 @@ body {
 }
 
 .map-properties path {
-  fill: var(--red);
+  fill: var(--fill, var(--red));
   stroke: var(--offwhite);
   stroke-width: 0.2;
-}
-
-.map-2022-tan > path{
-  fill: var(--tan);
 }
 
 .maps {

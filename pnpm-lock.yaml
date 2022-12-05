@@ -3,6 +3,10 @@ lockfileVersion: 5.4
 specifiers:
   '@11ty/eleventy': ^1.0.2
   cheerio: 1.0.0-rc.12
+  colorjs.io: ^0.4.2
+
+dependencies:
+  colorjs.io: 0.4.2
 
 devDependencies:
   '@11ty/eleventy': 1.0.2
@@ -514,6 +518,10 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
+
+  /colorjs.io/0.4.2:
+    resolution: {integrity: sha512-vtpiH+BTzZtzs4Yno0GyoC05Z20fTeLwNJ7lQzjxi8GJJb1SZO2o5yUBAUXzgvrO2JNuyIqur4gb1Z6HBjpd9A==}
+    dev: false
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}

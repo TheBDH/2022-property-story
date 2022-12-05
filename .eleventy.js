@@ -7,6 +7,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("maps/roads.svg");
     eleventyConfig.addPassthroughCopy("*.css");
     eleventyConfig.addPassthroughCopy("jquery-3.6.1.min.js");
+    eleventyConfig.addPassthroughCopy({
+        "node_modules/colorjs.io/dist/color.js": "js/color.js",
+    });
     eleventyConfig.addShortcode('include_map', (name) => {
         const source = fs.readFileSync(`./maps/${name}.svg`, 'utf8');
         const $ = cheerio.load(source);
