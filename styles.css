@@ -49,7 +49,7 @@
 }
 
 @font-face {
-  font-family: Redaction9;
+  font-family: Redaction7;
   src: url(./fonts/Redaction_90-Italic.woff2);
   font-weight: bold;
 }
@@ -131,8 +131,7 @@ h2{
 }
 
 #header{
-  padding-top: 10vh;
-  height: 300vh;
+  height: 220vh;
 }
 
 .byline {

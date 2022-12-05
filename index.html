@@ -213,7 +213,7 @@
         $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
         switch (stage) {
         case -1:
-          $('.map-2022').css('opacity', 1);
+          $('.map-2022').css('opacity', 0);
           $('.map-1770').css('opacity', 0);
           $('#year').css('opacity', 0);
           break;
@@ -238,6 +238,43 @@
           $('#year').text('1770')
           break;
         }
+
+
+
+        // const headlineStages = [1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8]
+        // let headlineStage;
+        // if (scroll < headlineStages[0]) headlineStage = -1
+        // else headlineStage = headlineStages.length - 1 - [...headlineStages].reverse().findIndex(s => scroll >= s);
+        // console.log(headlineStage)
+        // switch (headlineStage) {
+        //   case -1:
+        //   $('h1').css('font-family', 'Redaction0')
+        //   break;
+        //   case 0:
+        //   $('h1').css('font-family', 'Redaction'+(headlineStage+1))
+        //   break;
+        //   case 1:
+        //   $('h1').css('font-family', 'Redaction2')
+        //   break;
+        //   case 2:
+        //   $('h1').css('font-family', 'Redaction3')
+        //   break;
+        //   case 3:
+        //   $('h1').css('font-family', 'Redaction4')
+        //   break;
+        //   case 4:
+        //   $('h1').css('font-family', 'Redaction5')
+        //   break;
+        //   case 5:
+        //   $('h1').css('font-family', 'Redaction6')
+        //   break;
+        //   case 6:
+        //   $('h1').css('font-family', 'Redaction6')
+        //   break;
+        //   case 7:
+        //   $('h1').css('font-family', 'Redaction6')
+        //   break;
+        // }
       }
       onScroll()
       document.addEventListener('scroll', onScroll)
