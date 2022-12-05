@@ -125,7 +125,7 @@ h2{
 }
 
 #header{
-  height: 220vh;
+  height: 160vh;
 }
 
 .byline {
@@ -143,10 +143,10 @@ h2{
   padding-top: 10vh;
 }
 
-#sticky-header {
+/* #sticky-header {
   top: 0;
   position: sticky;
-}
+} */
 
 #curtains{
   z-index: -1;
