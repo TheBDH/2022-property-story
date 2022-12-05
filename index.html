@@ -10,7 +10,7 @@
   <div id="debug-overlay"></div>
   <div id="year"></div>
   <div class="maps">
-  <svg viewBox="0 0 314.1592653589905 160.21752962021856" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg viewBox="0 0 314.1592653589905 139.13084045264986" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
       <linearGradient id="fade">
         <stop offset="0%" stop-color="#F5F3EF" stop-opacity="1.0"/>
@@ -62,7 +62,7 @@
           <p>Today, Brown owns over <a class="map-link" href="https://www.brown.edu/Facilities/Facilities_Management/maps/#type/BUILDINGS">230</a> buildings in and around Providence. Recent acquisitions have been concentrated in the Jewelry District, representing a new era of growth for the University off College Hill and into downtown.</p>
           <p>But the campus wasn’t always so expansive.</p>
       </div>
-      <p style="text-align:center">SCROLL &darr;</p>
+      <p style="text-align:center">&darr; SCROLL &darr;</p>
     </div>
 
     <div id="sticky-header">
@@ -246,6 +246,8 @@
         case 3:
           $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', frac)
+          $('.map-2022-tan').css('opacity', 0)
+
           $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
           $('.maps svg > g').attr('transform', `scale(2) translate(30, ${-15 + frac * -10})`)
           break;
