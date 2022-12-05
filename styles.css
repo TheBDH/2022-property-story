@@ -4,6 +4,7 @@
   --black: #000000;
   --brown: #8D5124;
   --offblack: #241B16;
+  --tan: #E3D4BF;
 }
 
 @font-face {
@@ -69,7 +70,6 @@ body {
   justify-content: center;
   margin: auto;
   margin-top: 50vh;
-
 }
 
 #intro-graph1 {
@@ -80,6 +80,11 @@ body {
 
 .map > path{
   fill: var(--red);
+  stroke: var(--offwhite);
+}
+
+.map-2022-tan > path{
+  fill: var(--tan);
 }
 
 .maps {
@@ -115,7 +120,7 @@ h1, h2, h3, h4{
 }
 
 h1{
-  font-family: Redaction0;
+  font-family: Redaction3;
   font-size: 5rem;
   color: var(--red);
 }
