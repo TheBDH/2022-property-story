@@ -119,7 +119,7 @@ body {
 }
 
 h1, h2, h3, h4{
-  font-family: freight-display-pro, sans-serif;
+  font-family: Redaction3, serif;
 }
 
 h1{
@@ -237,7 +237,7 @@ h2{
 }
 
 hr {
-  height: 100vh;
+  height: 30vh;
   border: none;
 }
 
@@ -256,4 +256,15 @@ hr {
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
+}
+
+a {
+  color: var(--red);
+}
+
+.over-map-in {
+  margin-top: 2em;
+  background-color: var(--offwhite);
+  color: var(--offblack);
+  padding: 1.5em
 }

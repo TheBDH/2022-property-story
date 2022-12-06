@@ -36,6 +36,7 @@
         <g class="map map-1940">{% include_map '1940' %}</g>
         <g class="map map-1960">{% include_map '1960' %}</g>
         <g class="map map-1980">{% include_map '1980' %}</g>
+        <g class="map map-2000">{% include_map '2000' %}</g>
 
         <!-- <g class="map map-2022">{% include_map '2022' %}</g> -->
       </g>
@@ -140,8 +141,15 @@
       <p>In 2019, the University dissolved Farview. Since then, the University has converted much of its once-commercial property into student housing —&nbsp;tearing down houses and a strip mall on several distinct blocks of Brook Street to create the Sternlicht Commons Health and Wellness Dorm and the Brook Street dorms.</p>
 
       <p>Over the decades, the University sold many properties. The information for some sales is readily available, and less accessible for others. Here are the properties that The Herald could confirm the University sold between 1900 and 2000 — though others that appear consistently on these maps disappear in the 2002 map.</p>
+    
+      <div class="over-map-in">
+        TKTKTK
+        TKTKTK
+        TKTKTK
+      </div>
     </div>
 
+    <hr>
     <article>
       <p>Today, acquisitions on College Hill are “less frequent, because there&#39;s less available space,” said Executive Vice President for Planning and Policy Russell Carey ’91. The Jewelry District has seen more University expansion because of land made available by the 2009 <a href="https://www.nytimes.com/2009/11/11/realestate/commercial/11iway.html">relocation</a> of the I-195 highway.</p>
 
@@ -253,7 +261,7 @@
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
-        const stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 4.0, 4.3, 4.4, 4.9, 5.4];
+        const stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 4.0, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
         let stage;
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
@@ -268,7 +276,7 @@
           $('.map-1940').css('opacity', 0);
           $('.map-1960').css('opacity', 0);
           $('.map-1980').css('opacity', 0);
-
+          $('.map-2000').css('opacity', 0);
 
           $('#year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -15)`)
@@ -297,6 +305,7 @@
           $('.map-1770').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -40)`)
           $('#year').text('1770')
+          $('.map-1900').css('opacity', 0)
           break;
         case 6:
           $('.map-1900').css('opacity', frac)
@@ -305,16 +314,70 @@
         case 7:
           $('.map-1900').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(1) translate(30, -5)`)
+          $('#year').text('1900')
+          $('.map-1920').css('opacity', 0)
           break;
         case 8:
           $('.map-1920').css('opacity', frac)
           $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(30, ${-5 + frac * -25})`)
-          $('#year').text('1900')
           break;
         case 9:
           $('.map-1920').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
           $('#year').text('1920')
+          $('.map-1940').css('opacity', 0)
+          break;
+        case 10:
+          $('.map-1940').css('opacity', frac)
+          // $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          break;
+        case 11:
+          $('.map-1940').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          $('#year').text('1940')
+          $('.map-1960').css('opacity', 0)
+          break;
+        case 12:
+          $('.map-1960').css('opacity', frac)
+          $('.maps svg > g').attr('transform', `scale(${2-(frac/2)}) translate(30, ${-30+(-10*frac)})`)
+          break;
+        case 13:
+          $('.map-1960').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('#year').text('1960')
+          $('.map-1980').css('opacity', 0)
+          break;
+        case 14:
+          $('.map-1980').css('opacity', frac)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          break;
+        case 15:
+          $('.map-1980').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('#year').text('1980')
+          $('.map-2000').css('opacity', 0)
+          break;
+        case 16:
+          $('.map-2000').css('opacity', frac)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          break;
+        case 17:
+          $('.map-2000').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('#year').text('2000')
+          break;
+        case 18:
+          $('.maps svg > g').attr('transform', `scale(${1.5-(frac/2)}) translate(30, -40)`)
+          $('.maps svg > g').attr('opacity', `1`)
+          break;
+        case 19:
+          $('.maps svg > g').attr('transform', `scale(1) translate(30, -40)`)
+          $('.map').css('opacity', `${1-frac}`)
+          $('.maps svg > g').attr('opacity', `${1-frac/2}`)
+          break;
+        case 20:
+          $('.map').css('opacity', `${0}`)
+          $('.maps svg > g').attr('opacity', `.5`)
           break;
        }
       }
