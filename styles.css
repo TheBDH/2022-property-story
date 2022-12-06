@@ -268,3 +268,15 @@ a {
   color: var(--offblack);
   padding: 1.5em
 }
+
+.separator {
+  display: block;
+  margin: auto;
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+
+.separator > path {
+  fill: var(--red);
+  stroke: var(--offwhite);
+}
