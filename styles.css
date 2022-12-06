@@ -222,6 +222,7 @@ h2{
   color: var(--offwhite);
   background-color: var(--offblack);
   padding: 1.5em;
+  margin-inline: -1.5em;
   margin-top: 70vh;
 }
 @media (max-width: 768px) {
