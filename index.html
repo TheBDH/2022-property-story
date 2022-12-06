@@ -224,7 +224,7 @@
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
-        const stages = [0.6, .8, 1.8, 2.2, 2.6,3.0,4.0,5.0];
+        const stages = [0.6, .8, 1.8, 2.2, 2.6,3.0,4.0,4.3,4.6,4.9,5.4];
         let stage;
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
@@ -236,6 +236,10 @@
           $('.map-1770').css('opacity', 0);
           $('.map-1900').css('opacity', 0);
           $('.map-1920').css('opacity', 0);
+          $('.map-1940').css('opacity', 0);
+          $('.map-1960').css('opacity', 0);
+          $('.map-1980').css('opacity', 0);
+
 
           $('#year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(30, -15)`)
@@ -269,14 +273,20 @@
           console.log(frac)
           $('.map-1900').css('opacity', frac)
           $('.maps svg > g').attr('transform', `scale(${2-frac}) translate(30, ${-40 + frac * 35})`)
-          $('#year').text('1900')
           break;
         case 6:
-          console.log(frac)
           $('.map-1900').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(1) translate(30, -5)`)
+          break;
+        case 7:
           $('.map-1920').css('opacity', frac)
           $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(30, ${-5 + frac * -25})`)
           $('#year').text('1900')
+          break;
+        case 8:
+          $('.map-1920').css('opacity', 1)
+          $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          $('#year').text('1920')
           break;
        }
       }
