@@ -124,6 +124,7 @@ h1, h2, h3, h4{
 
 h1{
   font-family: Redaction3;
+  line-height: 5rem;
   font-size: 5rem;
   color: var(--red);
 }
