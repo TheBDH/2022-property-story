@@ -383,11 +383,14 @@
       const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
       const redToTan = colors.red.range(colors.tan, { space: 'lch', outputSpace: 'srgb' });
 
+      document.scrollingElement.clie
       var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
       function scaleStages(x) {
           if (x.matches) {
             stages = stages.map(function(z) { return z * ((1+(window.innerWidth/window.innerHeight))-.2) ; });
-            stages[21] = stages[21] + 3
+            stages[21] = stages[21];
+            console.log(stages[21])
+
             stages[22] = stages[21]+.5;
           } else {
             stages = stages;
@@ -401,6 +404,7 @@
         const s = year.toString();
         return s.split('').map(s => `<span>${s}</span>`).join('')
       }
+
 
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
@@ -545,23 +549,23 @@
           $('#year').css('opacity', 0);
           $('#slider-year').css('opacity', 0);
           break;
-          //        case 21:
-        case 21:
-          $('.map').attr('opacity', `0`)
-          $('.map-2022').css('--fill', "var(--red)");
-          $('.maps svg > g').attr('opacity', `${.5+frac/2}`)
-          $('.map-2002').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(${40*frac}, ${-30*frac})`)
-          $('#slider-year').css('opacity', frac);
-          break;
-        case 22:
+       }
+       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        // you're at the bottom of the page
           $('#slider-year').css('opacity', 1);
           $('.map-2002').css('opacity', 1)
           $('.maps svg > g').attr('opacity', `1`)
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
-          break;
-       }
+        } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
+          $('.map').css('opacity', `0`)
+          $('.map-2022').css('--fill', "var(--red)");
+          $('.maps svg > g').attr('opacity', `.5`)
+              $('.map-2002').css('opacity', 0)
+              $('.maps svg > g').attr('transform', `scale(1) translate(0,0)`)
+              $('#slider-year').css('opacity', 0);
+        }
       }
+
       onScroll()
       document.addEventListener('scroll', onScroll)
       $("#to-top").click(function () {
