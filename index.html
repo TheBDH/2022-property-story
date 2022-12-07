@@ -31,14 +31,16 @@
         y="0"
       />
       <g class="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
-        <g class="map intro-map" id="map-1770">{% include_map '1770' %}</g>
-        <g class="map intro-map" id="map-1900">{% include_map '1900' %}</g>
-        <g class="map intro-map" id="map-1920">{% include_map '1920' %}</g>
-        <g class="map intro-map" id="map-1940">{% include_map '1940' %}</g>
-        <g class="map intro-map" id="map-1960">{% include_map '1960' %}</g>
-        <g class="map intro-map" id="map-1980">{% include_map '1980' %}</g>
-        <g class="map intro-map" id="map-2000">{% include_map '2000' %}</g>
-        <g class="map intro-map" id="map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
+        <g id="intro-maps">
+          <g class="map" id="map-1770">{% include_map '1770' %}</g>
+          <g class="map" id="map-1900">{% include_map '1900' %}</g>
+          <g class="map" id="map-1920">{% include_map '1920' %}</g>
+          <g class="map" id="map-1940">{% include_map '1940' %}</g>
+          <g class="map" id="map-1960">{% include_map '1960' %}</g>
+          <g class="map" id="map-1980">{% include_map '1980' %}</g>
+          <g class="map" id="map-2000">{% include_map '2000' %}</g>
+          <g class="map" id="map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
+        </g>
 
         <g class="map" style="opacity: 0" id="map-2002">{% include_map '2002' %}</g>
         <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
@@ -384,16 +386,16 @@
       document.scrollingElement.clie
       var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
       function scaleStages(x) {
-          if (x.matches) {
-            stages = stages.map(function(z) { return z * ((1+(window.innerWidth/window.innerHeight))-.2) ; });
-            stages[21] = stages[21];
-            console.log(stages[21])
+        if (x.matches) {
+          stages = stages.map(function(z) { return z * ((1+(window.innerWidth/window.innerHeight))-.2) ; });
+          stages[21] = stages[21];
+          console.log(stages[21])
 
-            stages[22] = stages[21]+.5;
-          } else {
-            stages = stages;
-          }
+          stages[22] = stages[21]+.5;
+        } else {
+          stages = stages;
         }
+      }
       var x=window.matchMedia("(max-width: 767px)")
       scaleStages(x)
       x.addListener(scaleStages)
@@ -404,6 +406,7 @@
       }
 
       const automations = [
+        { id: 'intro-maps', shown: -1, hidden: 20 },
         { id: 'map-2022', shown: -1, hidden: 3 },
         { id: 'map-1770', shown: 4 },
         { id: 'map-1900', shown: 7 },
@@ -509,12 +512,10 @@
           break;
         case 19:
           $('#map-transform-wrapper').attr('transform', `scale(1) translate(0, 0)`)
-          $('.intro-map').css('opacity', `${1-frac}`)
           $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
           break;
         case 20:
-          $('.intro-map').css('opacity', `${0}`)
-          $('.map').attr('opacity', `0`)
+          $('.map').attr('opacity', 0)
           $('#map-transform-wrapper').attr('opacity', `.5`)
           $('#slider-year').css('opacity', 0);
           break;
@@ -546,10 +547,9 @@
 
       slider.oninput = function() {
         output.innerHTML = this.value;
-        console.log(`.map-${(parseInt(this.value)+2)}`)
-        $(`.map-${(parseInt(this.value)-2)}`).css('opacity', 0)
-        $(`.map-${(parseInt(this.value)+2)}`).css('opacity', 0)
-        $(`.map-${this.value}`).css('opacity', 1)
+        $(`#map-${(parseInt(this.value)-2)}`).css('opacity', 0)
+        $(`#map-${(parseInt(this.value)+2)}`).css('opacity', 0)
+        $(`#map-${this.value}`).css('opacity', 1)
       }
     </script>
 
