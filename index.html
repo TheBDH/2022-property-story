@@ -405,6 +405,7 @@
         return s.split('').map(s => `<span>${s}</span>`).join('')
       }
 
+
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
@@ -558,10 +559,13 @@
         } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
           $('.map').css('opacity', `0`)
           $('.map-2022').css('--fill', "var(--red)");
-          $('.maps svg > g').attr('transform', `scale(1) translate(0, 0)`)
           $('.maps svg > g').attr('opacity', `.5`)
+              $('.map-2002').css('opacity', 0)
+              $('.maps svg > g').attr('transform', `scale(1) translate(0,0)`)
+              $('#slider-year').css('opacity', 0);
         }
       }
+
       onScroll()
       document.addEventListener('scroll', onScroll)
       $("#to-top").click(function () {
