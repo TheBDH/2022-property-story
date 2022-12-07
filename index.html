@@ -289,7 +289,7 @@
       const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
 
       document.scrollingElement.clie
-      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
+      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
       function scaleStages(x) {
         if (x.matches) {
           stages = stages.map(function(z) { return z * ((1+(window.innerWidth/window.innerHeight))-.2) ; });
@@ -314,23 +314,23 @@
         { id: 'intro-maps', shown: -1, hidden: 20 },
         { id: 'map-2022', shown: -1, hidden: 3 },
         { id: 'map-1770', shown: 4 },
-        { id: 'map-1900', shown: 7 },
-        { id: 'map-onefinancial', shown: 7, hidden: 9 },
-        { id: 'map-1920', shown: 9 },
-        { id: 'map-1940', shown: 11 },
-        { id: 'map-1960', shown: 13 },
-        { id: 'map-1980', shown: 15 },
-        { id: 'map-2000', shown: 17 },
-        { id: 'year', shown: 1, hidden: 20 },
+        { id: 'map-1900', shown: 6 },
+        { id: 'map-onefinancial', shown: 6, hidden: 8 },
+        { id: 'map-1920', shown: 8 },
+        { id: 'map-1940', shown: 10 },
+        { id: 'map-1960', shown: 12 },
+        { id: 'map-1980', shown: 14 },
+        { id: 'map-2000', shown: 16 },
+        { id: 'year', shown: 1, hidden: 19 },
       ]
 
       const mapTransforms = [
         { stage: -1, scale: 2, translate: [40, -30] },
         { stage: 4, scale: 2, translate: [40, -40] },
-        { stage: 7, scale: 1, translate: [40, -5] },
-        { stage: 9, scale: 2, translate: [40, -30] },
-        { stage: 13, scale: 1.5, translate: [40, -40] },
-        { stage: 18, scale: 1, translate: [0, 0] },
+        { stage: 6, scale: 1, translate: [40, -5] },
+        { stage: 8, scale: 2, translate: [40, -30] },
+        { stage: 12, scale: 1.5, translate: [40, -40] },
+        { stage: 17, scale: 1, translate: [0, 0] },
       ]
       const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
 
@@ -406,34 +406,34 @@
         case 4:
           $('#year').html(formatYear(1770))
           break;
-        case 7:
+        case 6:
           $('#year').html(formatYear(1900))
           break;
-        case 9:
+        case 8:
           $('#year').html(formatYear(1920))
           break;
-        case 10:
+        case 9:
           // $('#map-transform-wrapper').attr('transform', `scale(2) translate(30, -30)`)
           break;
-        case 11:
+        case 10:
           $('#year').html(formatYear(1940))
           break;
-        case 13:
+        case 12:
           $('#year').html(formatYear(1960))
           break;
-        case 15:
+        case 14:
           $('#year').html(formatYear(1980))
           break;
-        case 17:
+        case 16:
           $('#year').html(formatYear(2000))
           break;
-        case 18:
+        case 17:
           $('#map-transform-wrapper').attr('opacity', `1`)
           break;
-        case 19:
+        case 18:
           $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
           break;
-        case 20:
+        case 19:
           $('.map').attr('opacity', 0)
           $('#map-transform-wrapper').attr('opacity', `.5`)
           $('#slider-year').css('opacity', 0);
