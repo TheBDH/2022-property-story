@@ -119,11 +119,12 @@ body {
 }
 
 h1, h2, h3, h4{
-  font-family: freight-display-pro, sans-serif;
+  font-family: Redaction3, serif;
 }
 
 h1{
   font-family: Redaction3;
+  line-height: 5rem;
   font-size: 5rem;
   color: var(--red);
 }
@@ -222,6 +223,7 @@ h2{
   color: var(--offwhite);
   background-color: var(--offblack);
   padding: 1.5em;
+  margin-inline: -1.5em;
   margin-top: 70vh;
 }
 @media (max-width: 768px) {
@@ -230,12 +232,12 @@ h2{
   }
 }
 
-.map-link {
+.over-map a {
   color: var(--offwhite);
 }
 
 hr {
-  height: 100vh;
+  height: 30vh;
   border: none;
 }
 
@@ -254,4 +256,27 @@ hr {
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
+}
+
+a {
+  color: var(--red);
+}
+
+.over-map-in {
+  margin-top: 2em;
+  background-color: var(--offwhite);
+  color: var(--offblack);
+  padding: 1.5em
+}
+
+.separator {
+  display: block;
+  margin: auto;
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+
+.separator > path {
+  fill: var(--red);
+  stroke: var(--offwhite);
 }
