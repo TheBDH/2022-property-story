@@ -394,6 +394,11 @@
       scaleStages(x)
       x.addListener(scaleStages)
 
+      const formatYear = year => {
+        const s = year.toString();
+        return s.split('').map(s => `<span>${s}</span>`).join('')
+      }
+
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
@@ -425,16 +430,17 @@
           $('.map-2018').css('opacity', 0);
           $('.map-2020').css('opacity', 0);
 
-          $('#year').css('opacity', 0);
+          $('#year').css('opacity', 0).html(formatYear(2022))
           $('#slider-year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           break;
         case 0:
           $('.map-2022').css('opacity', 1)
-          $('#year').css('opacity', frac).text('2022')
+          $('#year').css('opacity', frac).html(formatYear(2022))
           // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
           break;
         case 1:
+          $('#year').css('opacity', 1)
           $('.map-1770').css('opacity', 0)
           break;
         case 2:
@@ -445,13 +451,13 @@
           $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', frac)
 
-          $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
+          $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
           $('.maps svg > g').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
           break;
         case 4:
           $('.map-1770').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -40)`)
-          $('#year').text('1770')
+          $('#year').html(formatYear(1770))
           $('.map-1900').css('opacity', 0)
           break;
         case 6:
@@ -461,7 +467,7 @@
         case 7:
           $('.map-1900').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(1) translate(40, -5)`)
-          $('#year').text('1900')
+          $('#year').html(formatYear(1900))
           $('.map-1920').css('opacity', 0)
           break;
         case 8:
@@ -471,7 +477,7 @@
         case 9:
           $('.map-1920').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
-          $('#year').text('1920')
+          $('#year').html(formatYear(1920))
           $('.map-1940').css('opacity', 0)
           break;
         case 10:
@@ -481,7 +487,7 @@
         case 11:
           $('.map-1940').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
-          $('#year').text('1940')
+          $('#year').html(formatYear(1940))
           $('.map-1960').css('opacity', 0)
           break;
         case 12:
@@ -491,7 +497,7 @@
         case 13:
           $('.map-1960').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
-          $('#year').text('1960')
+          $('#year').html(formatYear(1960))
           $('.map-1980').css('opacity', 0)
           break;
         case 14:
@@ -501,7 +507,7 @@
         case 15:
           $('.map-1980').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
-          $('#year').text('1980')
+          $('#year').html(formatYear(1980))
           $('.map-2000').css('opacity', 0)
           break;
         case 16:
@@ -511,7 +517,7 @@
         case 17:
           $('.map-2000').css('opacity', 1)
           $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
-          $('#year').text('2000')
+          $('#year').html(formatYear(2000))
           break;
         case 18:
           $('.maps svg > g').attr('transform', `scale(${1.5-(frac/2)}) translate(${30+(-30*frac)}, ${-40+(40*frac)})`)
@@ -552,7 +558,6 @@
 
       var slider = document.getElementById("slider");
       var output = document.getElementById("slider-year");
-      output.innerHTML = slider.value;
 
       slider.oninput = function() {
         output.innerHTML = this.value;

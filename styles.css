@@ -337,7 +337,7 @@ a {
 #slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: var(--red); 
+  background: var(--red);
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -352,4 +352,12 @@ a {
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
+}
+#year span {
+  display: inline-block;
+  width: 1ch;
+  text-align: center;
+}
+#year span:first-child {
+  text-align: right;
 }
