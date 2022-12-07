@@ -278,6 +278,9 @@ hr {
   top: 10px;
   left: 10px;
   font-size: 1.2em;
+  font-variant-numeric: tabular-nums;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 #year {

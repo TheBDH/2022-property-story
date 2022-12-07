@@ -38,7 +38,7 @@
           <g class="map" id="map-1940">{% include_map '1940' %}</g>
           <g class="map" id="map-1960">{% include_map '1960' %}</g>
           <g class="map" id="map-1980">{% include_map '1980' %}</g>
-          <g class="map" id="map-2000">{% include_map '2000' %}</g>
+          {# <g class="map" id="map-2000">{# include_map '2000' #}</g> #}
           <g class="map" id="map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
         </g>
 
@@ -419,6 +419,16 @@
         { id: 'year', shown: 1, hidden: 20 },
       ]
 
+      const mapTransforms = [
+        { stage: -1, scale: 2, translate: [40, -30] },
+        { stage: 4, scale: 2, translate: [40, -40] },
+        { stage: 7, scale: 1, translate: [40, -5] },
+        { stage: 9, scale: 2, translate: [40, -30] },
+        { stage: 13, scale: 1.5, translate: [40, -40] },
+        { stage: 18, scale: 1, translate: [0, 0] },
+      ]
+      const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
+
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
@@ -427,7 +437,10 @@
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
         const frac = value(stages[stage] ?? 0, stages[stage + 1]);
-        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
+        const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+        const interpolate = (from, to) => from + (to - from) * easeCubic(frac) * easeCubic(frac);
+
+        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${(easeCubic(frac) * 100).toFixed(1)}%`);
 
         for (const automation of automations) {
           const el = document.getElementById(automation.id);
@@ -444,13 +457,39 @@
           }
         }
 
+        for (let i = 0; i < mapTransforms.length; i++) {
+          const t = mapTransforms[i];
+          if (i === 0 && stage === -1) {
+            // $('#map-transform-wrapper').attr('transform', `scale(${t.scale}) translate(${t.translate.join(',')})`)
+            $('#map-transform-wrapper').attr('transform', formatTransform(t));
+            break;
+          }
+          const prev = mapTransforms[i - 1];
+          if (stage === t.stage - 1) {
+            $('#map-transform-wrapper').attr('transform', formatTransform({
+              scale: interpolate(prev.scale, t.scale),
+              translate: [
+                interpolate(prev.translate[0], t.translate[0]),
+                interpolate(prev.translate[1], t.translate[1])
+              ]
+            }))
+            break;
+          }
+          if (stage === t.stage) {
+            $('#map-transform-wrapper').attr('transform', formatTransform(t));
+            break;
+          }
+        }
+        if (stage > mapTransforms[mapTransforms.length - 1].stage) {
+          $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
+        }
+
         switch (stage) {
         case -1:
           $('#map-2022').css('--fill', redToTan(frac));
 
           $('#year').html(formatYear(2022))
           $('#slider-year').css('opacity', 0);
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           break;
         case 0:
           $('#year').html(formatYear(2022))
@@ -458,60 +497,35 @@
           break;
         case 3:
           $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
           break;
         case 4:
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -40)`)
           $('#year').html(formatYear(1770))
           break;
-        case 6:
-          $('#map-transform-wrapper').attr('transform', `scale(${2-(frac)}) translate(40, ${-40 + frac * 35})`)
-          break;
         case 7:
-          $('#map-transform-wrapper').attr('transform', `scale(1) translate(40, -5)`)
           $('#year').html(formatYear(1900))
           break;
-        case 8:
-          $('#map-transform-wrapper').attr('transform', `scale(${1+frac}) translate(40, ${-5 + frac * -25})`)
-          break;
         case 9:
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').html(formatYear(1920))
           break;
         case 10:
           // $('#map-transform-wrapper').attr('transform', `scale(2) translate(30, -30)`)
           break;
         case 11:
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').html(formatYear(1940))
           break;
-        case 12:
-          $('#map-transform-wrapper').attr('transform', `scale(${2-(frac/2)}) translate(40, ${-30+(-10*frac)})`)
-          break;
         case 13:
-          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(1960))
           break;
-        case 14:
-          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
-          break;
         case 15:
-          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(1980))
           break;
-        case 16:
-          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
-          break;
         case 17:
-          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(2000))
           break;
         case 18:
-          $('#map-transform-wrapper').attr('transform', `scale(${1.5-(frac/2)}) translate(${30+(-30*frac)}, ${-40+(40*frac)})`)
           $('#map-transform-wrapper').attr('opacity', `1`)
           break;
         case 19:
-          $('#map-transform-wrapper').attr('transform', `scale(1) translate(0, 0)`)
           $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
           break;
         case 20:
