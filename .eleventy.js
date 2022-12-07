@@ -13,6 +13,12 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addShortcode('include_map', (name) => {
         const source = fs.readFileSync(`./maps/${name}.svg`, 'utf8');
         const $ = cheerio.load(source);
-        return $('svg').children().toArray().map(c => $(c).html())
+        if ($('svg').children().length > 1) {
+            return $('svg').html();
+        }
+        return $('svg').children().toArray().map(c => $(c).html()).join('');
+    })
+    eleventyConfig.addShortcode('separator', (name) => {
+        return fs.readFileSync(`./separators/${name}.svg`, 'utf8');
     })
 }
