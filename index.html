@@ -38,8 +38,7 @@
         <g class="map map-1960">{% include_map '1960' %}</g>
         <g class="map map-1980">{% include_map '1980' %}</g>
         <g class="map map-2000">{% include_map '2000' %}</g>
-
-        <!-- <g class="map map-2022">{% include_map '2022' %}</g> -->
+        <g class="map map-2022">{% include_map '2022' %}</g>
       </g>
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade-vertical)" /> -->
@@ -370,7 +369,7 @@
       var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
       function scaleStages(x) {
           if (x.matches) { 
-            stages = stages.map(function(z) { return z * 1.5; });
+            stages = stages.map(function(z) { return z * 1.4; });
           } else {
             stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
           }
@@ -401,7 +400,7 @@
           $('.map-2000').css('opacity', 0);
 
           $('#year').css('opacity', 0);
-          $('.maps svg > g').attr('transform', `scale(2) translate(30, -15)`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           break;
         case 0:
           $('.map-2022').css('opacity', 1)
@@ -421,31 +420,31 @@
           $('.map-2022-tan').css('opacity', 0)
 
           $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
-          $('.maps svg > g').attr('transform', `scale(2) translate(30, ${-15 + frac * -25})`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
           break;
         case 4:
           $('.map-1770').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(2) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, -40)`)
           $('#year').text('1770')
           $('.map-1900').css('opacity', 0)
           break;
         case 6:
           $('.map-1900').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${2-frac}) translate(30, ${-40 + frac * 35})`)
+          $('.maps svg > g').attr('transform', `scale(${2-frac}) translate(40, ${-40 + frac * 35})`)
           break;
         case 7:
           $('.map-1900').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1) translate(30, -5)`)
+          $('.maps svg > g').attr('transform', `scale(1) translate(40, -5)`)
           $('#year').text('1900')
           $('.map-1920').css('opacity', 0)
           break;
         case 8:
           $('.map-1920').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(30, ${-5 + frac * -25})`)
+          $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(40, ${-5 + frac * -25})`)
           break;
         case 9:
           $('.map-1920').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').text('1920')
           $('.map-1940').css('opacity', 0)
           break;
@@ -455,37 +454,37 @@
           break;
         case 11:
           $('.map-1940').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').text('1940')
           $('.map-1960').css('opacity', 0)
           break;
         case 12:
           $('.map-1960').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${2-(frac/2)}) translate(30, ${-30+(-10*frac)})`)
+          $('.maps svg > g').attr('transform', `scale(${2-(frac/2)}) translate(40, ${-30+(-10*frac)})`)
           break;
         case 13:
           $('.map-1960').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').text('1960')
           $('.map-1980').css('opacity', 0)
           break;
         case 14:
           $('.map-1980').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
           break;
         case 15:
           $('.map-1980').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').text('1980')
           $('.map-2000').css('opacity', 0)
           break;
         case 16:
           $('.map-2000').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
           break;
         case 17:
           $('.map-2000').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(30, -40)`)
+          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').text('2000')
           break;
         case 18:
