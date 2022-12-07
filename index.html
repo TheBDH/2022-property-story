@@ -21,7 +21,7 @@
       </linearGradient>
       <linearGradient id="fade-vertical" x1="0" y1="0" x2="0" y2="1" xlink:href="#fade" />
     </defs>
-    <g style="transform-origin: center;">
+    <g id="map-transform-wrapper" style="transform-origin: center;">
       <image
         xlink:href="maps/roads.svg"
         opacity="30%"
@@ -31,28 +31,26 @@
         y="0"
       />
       <g class="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
+        <g class="map intro-map" id="map-1770">{% include_map '1770' %}</g>
+        <g class="map intro-map" id="map-1900">{% include_map '1900' %}</g>
+        <g class="map intro-map" id="map-1920">{% include_map '1920' %}</g>
+        <g class="map intro-map" id="map-1940">{% include_map '1940' %}</g>
+        <g class="map intro-map" id="map-1960">{% include_map '1960' %}</g>
+        <g class="map intro-map" id="map-1980">{% include_map '1980' %}</g>
+        <g class="map intro-map" id="map-2000">{% include_map '2000' %}</g>
+        <g class="map intro-map" id="map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
 
-        <g class="map intro-map map-1770">{% include_map '1770' %}</g>
-        <g class="map intro-map map-1900">{% include_map '1900' %}</g>
-        <g class="map intro-map map-1920">{% include_map '1920' %}</g>
-        <g class="map intro-map map-1940">{% include_map '1940' %}</g>
-        <g class="map intro-map map-1960">{% include_map '1960' %}</g>
-        <g class="map intro-map map-1980">{% include_map '1980' %}</g>
-        <g class="map intro-map map-2000">{% include_map '2000' %}</g>
-        <g class="map intro-map map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
-
-
-        <g class="map map-2002">{% include_map '2002' %}</g>
-        <g class="map map-2004">{% include_map '2004' %}</g>
-        <g class="map map-2006">{% include_map '2006' %}</g>
-        <g class="map map-2008">{% include_map '2008' %}</g>
-        <g class="map map-2010">{% include_map '2010' %}</g>
-        <g class="map map-2012">{% include_map '2012' %}</g>
-        <g class="map map-2014">{% include_map '2014' %}</g>
-        <g class="map map-2016">{% include_map '2016' %}</g>
-        <g class="map map-2018">{% include_map '2018' %}</g>
-        <g class="map map-2020">{% include_map '2020' %}</g>
-        <g class="map map-2022">{% include_map '2022' %}</g>
+        <g class="map" id="map-2002">{% include_map '2002' %}</g>
+        <g class="map" id="map-2004">{% include_map '2004' %}</g>
+        <g class="map" id="map-2006">{% include_map '2006' %}</g>
+        <g class="map" id="map-2008">{% include_map '2008' %}</g>
+        <g class="map" id="map-2010">{% include_map '2010' %}</g>
+        <g class="map" id="map-2012">{% include_map '2012' %}</g>
+        <g class="map" id="map-2014">{% include_map '2014' %}</g>
+        <g class="map" id="map-2016">{% include_map '2016' %}</g>
+        <g class="map" id="map-2018">{% include_map '2018' %}</g>
+        <g class="map" id="map-2020">{% include_map '2020' %}</g>
+        <g class="map" id="map-2022">{% include_map '2022' %}</g>
       </g>
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade-vertical)" /> -->
@@ -417,135 +415,135 @@
         $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}%`);
         switch (stage) {
         case -1:
-          $('.map-2022').css('opacity', 1).css('--fill', redToTan(frac));
+          $('#map-2022').css('opacity', 1).css('--fill', redToTan(frac));
 
-          $('.map-1770').css('opacity', 0);
-          $('.map-1900').css('opacity', 0);
-          $('.map-1920').css('opacity', 0);
-          $('.map-1940').css('opacity', 0);
-          $('.map-1960').css('opacity', 0);
-          $('.map-1980').css('opacity', 0);
-          $('.map-2000').css('opacity', 0);
-          $('.map-2002').css('opacity', 0);
-          $('.map-2004').css('opacity', 0);
-          $('.map-2006').css('opacity', 0);
-          $('.map-2008').css('opacity', 0);
-          $('.map-2010').css('opacity', 0);
-          $('.map-2012').css('opacity', 0);
-          $('.map-2014').css('opacity', 0);
-          $('.map-2016').css('opacity', 0);
-          $('.map-2018').css('opacity', 0);
-          $('.map-2020').css('opacity', 0);
-          $('.map-onefinancial').css('opacity', 0);
+          $('#map-1770').css('opacity', 0);
+          $('#map-1900').css('opacity', 0);
+          $('#map-1920').css('opacity', 0);
+          $('#map-1940').css('opacity', 0);
+          $('#map-1960').css('opacity', 0);
+          $('#map-1980').css('opacity', 0);
+          $('#map-2000').css('opacity', 0);
+          $('#map-2002').css('opacity', 0);
+          $('#map-2004').css('opacity', 0);
+          $('#map-2006').css('opacity', 0);
+          $('#map-2008').css('opacity', 0);
+          $('#map-2010').css('opacity', 0);
+          $('#map-2012').css('opacity', 0);
+          $('#map-2014').css('opacity', 0);
+          $('#map-2016').css('opacity', 0);
+          $('#map-2018').css('opacity', 0);
+          $('#map-2020').css('opacity', 0);
+          $('#map-onefinancial').css('opacity', 0);
 
           $('#year').css('opacity', 0).html(formatYear(2022))
           $('#slider-year').css('opacity', 0);
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           break;
         case 0:
-          $('.map-2022').css('opacity', 1)
+          $('#map-2022').css('opacity', 1)
           $('#year').css('opacity', frac).html(formatYear(2022))
           // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
           break;
         case 1:
           $('#year').css('opacity', 1)
-          $('.map-1770').css('opacity', 0)
+          $('#map-1770').css('opacity', 0)
           break;
         case 2:
-          $('.map-2022').css('opacity', 1 - frac)
-          $('.map-1770').css('opacity', 0)
+          $('#map-2022').css('opacity', 1 - frac)
+          $('#map-1770').css('opacity', 0)
           break;
         case 3:
-          $('.map-2022').css('opacity', 0)
-          $('.map-1770').css('opacity', frac)
+          $('#map-2022').css('opacity', 0)
+          $('#map-1770').css('opacity', frac)
 
           $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
           break;
         case 4:
-          $('.map-1770').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, -40)`)
+          $('#map-1770').css('opacity', 1)
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -40)`)
           $('#year').html(formatYear(1770))
-          $('.map-1900').css('opacity', 0)
-          $('.map-onefinancial').css('opacity', 0);
+          $('#map-1900').css('opacity', 0)
+          $('#map-onefinancial').css('opacity', 0);
           break;
         case 6:
-          $('.map-1900').css('opacity', frac)
-          $('.map-onefinancial').css('opacity', frac);
-          $('.maps svg > g').attr('transform', `scale(${2-(frac)}) translate(40, ${-40 + frac * 35})`)
+          $('#map-1900').css('opacity', frac)
+          $('#map-onefinancial').css('opacity', frac);
+          $('#map-transform-wrapper').attr('transform', `scale(${2-(frac)}) translate(40, ${-40 + frac * 35})`)
           break;
         case 7:
-          $('.map-1900').css('opacity', 1)
-          $('.map-onefinancial').css('opacity', 1);
-          $('.maps svg > g').attr('transform', `scale(1) translate(40, -5)`)
+          $('#map-1900').css('opacity', 1)
+          $('#map-onefinancial').css('opacity', 1);
+          $('#map-transform-wrapper').attr('transform', `scale(1) translate(40, -5)`)
           $('#year').html(formatYear(1900))
-          $('.map-1920').css('opacity', 0)
+          $('#map-1920').css('opacity', 0)
           break;
         case 8:
-          $('.map-1920').css('opacity', frac)
-          $('.map-onefinancial').css('opacity', 1-frac);
-          $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(40, ${-5 + frac * -25})`)
+          $('#map-1920').css('opacity', frac)
+          $('#map-onefinancial').css('opacity', 1-frac);
+          $('#map-transform-wrapper').attr('transform', `scale(${1+frac}) translate(40, ${-5 + frac * -25})`)
           break;
         case 9:
-          $('.map-1920').css('opacity', 1)
-          $('.map-onefinancial').css('opacity', 0);
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
+          $('#map-1920').css('opacity', 1)
+          $('#map-onefinancial').css('opacity', 0);
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').html(formatYear(1920))
-          $('.map-1940').css('opacity', 0)
+          $('#map-1940').css('opacity', 0)
           break;
         case 10:
-          $('.map-1940').css('opacity', frac)
-          // $('.maps svg > g').attr('transform', `scale(2) translate(30, -30)`)
+          $('#map-1940').css('opacity', frac)
+          // $('#map-transform-wrapper').attr('transform', `scale(2) translate(30, -30)`)
           break;
         case 11:
-          $('.map-1940').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
+          $('#map-1940').css('opacity', 1)
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
           $('#year').html(formatYear(1940))
-          $('.map-1960').css('opacity', 0)
+          $('#map-1960').css('opacity', 0)
           break;
         case 12:
-          $('.map-1960').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(${2-(frac/2)}) translate(40, ${-30+(-10*frac)})`)
+          $('#map-1960').css('opacity', frac)
+          $('#map-transform-wrapper').attr('transform', `scale(${2-(frac/2)}) translate(40, ${-30+(-10*frac)})`)
           break;
         case 13:
-          $('.map-1960').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
+          $('#map-1960').css('opacity', 1)
+          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(1960))
-          $('.map-1980').css('opacity', 0)
+          $('#map-1980').css('opacity', 0)
           break;
         case 14:
-          $('.map-1980').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
+          $('#map-1980').css('opacity', frac)
+          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           break;
         case 15:
-          $('.map-1980').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
+          $('#map-1980').css('opacity', 1)
+          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(1980))
-          $('.map-2000').css('opacity', 0)
+          $('#map-2000').css('opacity', 0)
           break;
         case 16:
-          $('.map-2000').css('opacity', frac)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
+          $('#map-2000').css('opacity', frac)
+          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           break;
         case 17:
-          $('.map-2000').css('opacity', 1)
-          $('.maps svg > g').attr('transform', `scale(1.5) translate(40, -40)`)
+          $('#map-2000').css('opacity', 1)
+          $('#map-transform-wrapper').attr('transform', `scale(1.5) translate(40, -40)`)
           $('#year').html(formatYear(2000))
           break;
         case 18:
-          $('.maps svg > g').attr('transform', `scale(${1.5-(frac/2)}) translate(${30+(-30*frac)}, ${-40+(40*frac)})`)
-          $('.maps svg > g').attr('opacity', `1`)
+          $('#map-transform-wrapper').attr('transform', `scale(${1.5-(frac/2)}) translate(${30+(-30*frac)}, ${-40+(40*frac)})`)
+          $('#map-transform-wrapper').attr('opacity', `1`)
           break;
         case 19:
-          $('.maps svg > g').attr('transform', `scale(1) translate(0, 0)`)
+          $('#map-transform-wrapper').attr('transform', `scale(1) translate(0, 0)`)
           $('.intro-map').css('opacity', `${1-frac}`)
-          $('.maps svg > g').attr('opacity', `${1-frac/2}`)
+          $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
           $('#year').css('opacity', `${1-frac}`);
           break;
         case 20:
           $('.intro-map').css('opacity', `${0}`)
           $('.map').attr('opacity', `0`)
-          $('.maps svg > g').attr('opacity', `.5`)
+          $('#map-transform-wrapper').attr('opacity', `.5`)
           $('#year').css('opacity', 0);
           $('#slider-year').css('opacity', 0);
           break;
@@ -553,16 +551,16 @@
        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         // you're at the bottom of the page
           $('#slider-year').css('opacity', 1);
-          $('.map-2002').css('opacity', 1)
-          $('.maps svg > g').attr('opacity', `1`)
-          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
+          $('#map-2002').css('opacity', 1)
+          $('#map-transform-wrapper').attr('opacity', `1`)
+          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
         } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
           $('.map').css('opacity', `0`)
-          $('.map-2022').css('--fill', "var(--red)");
-          $('.maps svg > g').attr('opacity', `.5`)
-              $('.map-2002').css('opacity', 0)
-              $('.maps svg > g').attr('transform', `scale(1) translate(0,0)`)
-              $('#slider-year').css('opacity', 0);
+          $('#map-2022').css('--fill', "var(--red)");
+          $('#map-transform-wrapper').attr('opacity', `.5`)
+          $('#map-2002').css('opacity', 0)
+          $('#map-transform-wrapper').attr('transform', `scale(1) translate(0,0)`)
+          $('#slider-year').css('opacity', 0);
         }
       }
 
