@@ -38,6 +38,17 @@
         <g class="map map-1960">{% include_map '1960' %}</g>
         <g class="map map-1980">{% include_map '1980' %}</g>
         <g class="map map-2000">{% include_map '2000' %}</g>
+
+        <g class="map map-2002">{% include_map '2002' %}</g>
+        <g class="map map-2004">{% include_map '2004' %}</g>
+        <g class="map map-2006">{% include_map '2006' %}</g>
+        <g class="map map-2008">{% include_map '2008' %}</g>
+        <g class="map map-2010">{% include_map '2010' %}</g>
+        <g class="map map-2012">{% include_map '2012' %}</g>
+        <g class="map map-2014">{% include_map '2014' %}</g>
+        <g class="map map-2016">{% include_map '2016' %}</g>
+        <g class="map map-2018">{% include_map '2018' %}</g>
+        <g class="map map-2020">{% include_map '2020' %}</g>
         <g class="map map-2022">{% include_map '2022' %}</g>
       </g>
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
@@ -352,6 +363,8 @@
 
       <p>“It is our mutual goal,” Steele said, “to basically make this place better than the way we have found it.”</p>
     </article>
+    <div class="map-slider"> </div>
+    <input class="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
   </div>
   <div id="footer">
 
@@ -366,12 +379,12 @@
       const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
       const redToTan = colors.red.range(colors.tan, { space: 'lch', outputSpace: 'srgb' });
       
-      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
+      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18];
       function scaleStages(x) {
           if (x.matches) { 
             stages = stages.map(function(z) { return z * 1.4; });
           } else {
-            stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
+            stages = stages;
           }
         }
       var x=window.matchMedia("(max-width: 767px)");
@@ -391,6 +404,7 @@
         switch (stage) {
         case -1:
           $('.map-2022').css('opacity', 1).css('--fill', redToTan(frac));
+
           $('.map-1770').css('opacity', 0);
           $('.map-1900').css('opacity', 0);
           $('.map-1920').css('opacity', 0);
@@ -398,6 +412,16 @@
           $('.map-1960').css('opacity', 0);
           $('.map-1980').css('opacity', 0);
           $('.map-2000').css('opacity', 0);
+          $('.map-2002').css('opacity', 0);
+          $('.map-2004').css('opacity', 0);
+          $('.map-2006').css('opacity', 0);
+          $('.map-2008').css('opacity', 0);
+          $('.map-2010').css('opacity', 0);
+          $('.map-2012').css('opacity', 0);
+          $('.map-2014').css('opacity', 0);
+          $('.map-2016').css('opacity', 0);
+          $('.map-2018').css('opacity', 0);
+          $('.map-2020').css('opacity', 0);
 
           $('#year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
@@ -499,6 +523,10 @@
         case 20:
           $('.map').css('opacity', `${0}`)
           $('.maps svg > g').attr('opacity', `.5`)
+          break;
+        case 21:
+          $('.map-2002').css('opacity', 1)
+          $('.maps svg > g').attr('opacity', `1`)
           break;
        }
       }
