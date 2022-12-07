@@ -72,6 +72,12 @@ body {
   background-color: #F5F3EF;
   font-family: Lora, Georgia, 'Times New Roman', Times, serif;
   line-height: 1.3;
+  font-size: 1em;
+}
+@media screen and (max-width: 768px) {
+  .body {
+      font-size: 2em;
+    }
 }
 
 #intro-section1 {
@@ -82,6 +88,13 @@ body {
 }
 #intro-graph1 {
   margin-top: 40vh !important;
+}
+@media (max-width: 768px) {
+  #intro-graph1 {
+    margin-top: 30vh !important;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
 }
 
 .map-properties path {
@@ -131,10 +144,17 @@ h1{
 @media (max-width: 768px) {
   h1 {
     font-size: 3rem;
+    line-height: 3rem;
   }
 }
 h2{
   font-size: 2.2rem;
+}
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+  }
 }
 
 #header{
@@ -145,6 +165,12 @@ h2{
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   justify-content: center;
+}
+@media (max-width: 768px) {
+  .byline {
+    margin:auto;
+    width: 60vw;
+  }
 }
 
 #headline-wrapper{
@@ -227,8 +253,8 @@ h2{
   margin-top: 70vh;
 }
 @media (max-width: 768px) {
-  #content .over-map {
-    margin-inline: -10vw;
+  .over-map {
+    margin-top: 90vh;
   }
 }
 
@@ -249,7 +275,6 @@ hr {
 }
 
 #year {
-
   position: fixed;
   bottom: 10px;
   left: 10px;

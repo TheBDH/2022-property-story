@@ -3,6 +3,7 @@
   <title>Property</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://use.typekit.net/mxr8glf.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./jquery-3.6.1.min.js"></script>
 </head>
 
@@ -365,10 +366,24 @@
       const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
       const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
       const redToTan = colors.red.range(colors.tan, { space: 'lch', outputSpace: 'srgb' });
+      
+      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
+      function scaleStages(x) {
+          if (x.matches) { 
+            stages = stages.map(function(z) { return z * 1.5; });
+          } else {
+            stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
+          }
+        }
+      var x=window.matchMedia("(max-width: 767px)");
+      scaleStages(x)
+      x.addListener(scaleStages)
+
       const onScroll = () => {
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
-        const stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 4.0, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11];
+        
+
         let stage;
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
