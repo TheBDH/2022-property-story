@@ -311,7 +311,7 @@ a {
   stroke: var(--offwhite);
 }
 
-.slider {
+#slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   height: 80%;
@@ -324,7 +324,7 @@ a {
 }
 
 
-.slider::-webkit-slider-thumb {
+#slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
@@ -334,7 +334,7 @@ a {
   cursor: pointer; /* Cursor on hover */
 }
 
-.slider::-moz-range-thumb {
+#slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   background: var(--red); 
@@ -343,4 +343,13 @@ a {
 
 .map-slider {
   height: 100vh;
+}
+
+#slider-year {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 2em;
+  font-family: Redaction3;
+  color: var(--red);
 }

@@ -364,7 +364,8 @@
       <p>“It is our mutual goal,” Steele said, “to basically make this place better than the way we have found it.”</p>
     </article>
     <div class="map-slider"> </div>
-    <input class="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
+    <input id="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
+    <div id="slider-year">2002</div>
   </div>
   <div id="footer">
 
@@ -379,10 +380,12 @@
       const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
       const redToTan = colors.red.range(colors.tan, { space: 'lch', outputSpace: 'srgb' });
       
-      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18];
+      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.3, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
       function scaleStages(x) {
           if (x.matches) { 
             stages = stages.map(function(z) { return z * 1.4; });
+            stages[21] = 27;
+            stages[22] = 27.5;
           } else {
             stages = stages;
           }
@@ -395,7 +398,6 @@
         const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
         const value = (min, max) => (scroll - min) / (max - min);
         
-
         let stage;
         if (scroll < stages[0]) stage = -1
         else stage = stages.length - 1 - [...stages].reverse().findIndex(s => scroll >= s);
@@ -424,6 +426,7 @@
           $('.map-2020').css('opacity', 0);
 
           $('#year').css('opacity', 0);
+          $('#slider-year').css('opacity', 0);
           $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           break;
         case 0:
@@ -441,7 +444,6 @@
         case 3:
           $('.map-2022').css('opacity', 0)
           $('.map-1770').css('opacity', frac)
-          $('.map-2022-tan').css('opacity', 0)
 
           $('#year').text((frac * (1770 - 2022) + 2022).toFixed())
           $('.maps svg > g').attr('transform', `scale(2) translate(40, ${-30 + frac * -10})`)
@@ -519,14 +521,26 @@
           $('.maps svg > g').attr('transform', `scale(1) translate(0, 0)`)
           $('.map').css('opacity', `${1-frac}`)
           $('.maps svg > g').attr('opacity', `${1-frac/2}`)
+          $('#year').css('opacity', `${1-frac}`);
           break;
         case 20:
           $('.map').css('opacity', `${0}`)
           $('.maps svg > g').attr('opacity', `.5`)
+          $('#year').css('opacity', 0);
+          $('#slider-year').css('opacity', 0);
           break;
         case 21:
+          $('.map-2002').css('opacity', frac)
+          $('.map-2022').css('--fill', 'var(--red)');
+          $('.maps svg > g').attr('opacity', `${.5+frac/2}`)
+          $('.maps svg > g').attr('transform', `scale(${1+frac}) translate(${40*frac}, ${-30*frac})`)
+          $('#slider-year').css('opacity', frac);
+          break;
+        case 22:
+          $('#slider-year').css('opacity', 1);
           $('.map-2002').css('opacity', 1)
           $('.maps svg > g').attr('opacity', `1`)
+          $('.maps svg > g').attr('transform', `scale(2) translate(40, -30)`)
           break;
        }
       }
@@ -535,6 +549,18 @@
       $("#to-top").click(function () {
         $("html, body").animate({scrollTop: 0}, 1000);
       });
+
+      var slider = document.getElementById("slider");
+      var output = document.getElementById("slider-year");
+      output.innerHTML = slider.value;
+
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+        console.log(`.map-${(parseInt(this.value)+2)}`)
+        $(`.map-${(parseInt(this.value)-2)}`).css('opacity', 0)
+        $(`.map-${(parseInt(this.value)+2)}`).css('opacity', 0)
+        $(`.map-${this.value}`).css('opacity', 1)
+      }
     </script>
 
 
