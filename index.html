@@ -9,7 +9,7 @@
 
 <body id="body">
   <div id="debug-overlay"></div>
-  <div id="year"></div>
+  <div id="year" class="year"></div>
   <div class="maps">
   <svg viewBox="0 0 314.1592653589905 139.13084045264986" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -272,8 +272,8 @@
       <p>“It is our mutual goal,” Steele said, “to basically make this place better than the way we have found it.”</p>
     </div>
     <div class="map-slider"> </div>
+    <div id="slider-year" class="year">2002</div>
     <input id="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
-    <div id="slider-year">2002</div>
   </div>
   <div id="footer">
     <div style="display: flex; flex-direction: row; color: black; justify-content: center;">
@@ -308,7 +308,7 @@
         /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
         /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom, year: 2000  },
         /* 17 */ { id: 'intro-graf10', anchor: top,    at: top    },
-        /* 18 */ { id: 'main-content', anchor: top,    at: top    },
+        /* 18 */ { id: 'main-content', anchor: top,    at: 0.25   },
         /* 19 */ { id: 'main-content', anchor: bottom, at: center },
         /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
       ]
@@ -319,7 +319,7 @@
       }
 
       const automations = [
-        { id: 'intro-maps', shown: -1, hidden: 20 },
+        { id: 'intro-maps', shown: -1, hidden: 19 },
         { id: 'map-2022', shown: -1, hidden: 3 },
         { id: 'map-1770', shown: 4 },
         { id: 'map-1900', shown: 6 },
@@ -463,7 +463,7 @@
       var output = document.getElementById("slider-year");
 
       slider.oninput = function() {
-        output.innerHTML = this.value;
+        output.innerHTML = formatYear(this.value);
         $(`#map-${(parseInt(this.value)-2)}`).css('opacity', 0)
         $(`#map-${(parseInt(this.value)+2)}`).css('opacity', 0)
         $(`#map-${this.value}`).css('opacity', 1)

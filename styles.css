@@ -349,19 +349,19 @@ a {
 }
 
 #slider-year {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
+  display: block;
+  margin: 0 auto 10px;
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
   width: 100px;
+  text-align: center;
 }
-#year span {
+.year span {
   display: inline-block;
   width: 1ch;
   text-align: center;
 }
-#year span:first-child {
+.year span:first-child {
   text-align: right;
 }
