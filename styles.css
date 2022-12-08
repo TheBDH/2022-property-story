@@ -86,11 +86,11 @@ body {
   justify-content: center;
   margin: auto;
 }
-#intro-graph1 {
+#intro-graf1 {
   margin-top: 40vh !important;
 }
 @media (max-width: 768px) {
-  #intro-graph1 {
+  #intro-graf1 {
     margin-top: 30vh !important;
     margin-left: 1em;
     margin-right: 1em;
