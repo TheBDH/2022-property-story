@@ -11,7 +11,7 @@ module.exports = function (eleventyConfig) {
         "node_modules/colorjs.io/dist/color.js": "js/color.js",
     });
     eleventyConfig.addShortcode('include_map', (name) => {
-        const source = fs.readFileSync(`./maps/${name}.svg`, 'utf8');
+        const source = fs.readFileSync(`./assets/maps/${name}.svg`, 'utf8');
         const $ = cheerio.load(source);
         if ($('svg').children().length > 1) {
             return $('svg').html();
@@ -19,6 +19,6 @@ module.exports = function (eleventyConfig) {
         return $('svg').children().toArray().map(c => $(c).html()).join('');
     })
     eleventyConfig.addShortcode('separator', (name) => {
-        return fs.readFileSync(`./separators/${name}.svg`, 'utf8');
+        return fs.readFileSync(`./assets/separators/${name}.svg`, 'utf8');
     })
 }
