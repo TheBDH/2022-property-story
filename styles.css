@@ -110,6 +110,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100lvh;
   z-index: -1;
 }
 .maps::after {
@@ -282,6 +283,17 @@ hr {
   font-variant-numeric: tabular-nums;
   color: white;
   mix-blend-mode: difference;
+  z-index: 1;
+}
+#debug-overlay ~ * [id^=intro-graf] {
+  position: relative;
+}
+#debug-overlay ~ * [id^=intro-graf]::after {
+  content: attr(id);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5;
 }
 
 #year {
