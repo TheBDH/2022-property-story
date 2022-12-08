@@ -7,7 +7,7 @@
   <script src="./jquery-3.6.1.min.js"></script>
 </head>
 
-<body>
+<body id="body">
   <div id="debug-overlay"></div>
   <div id="year"></div>
   <div class="maps">
@@ -23,6 +23,7 @@
     </defs>
     <g id="map-transform-wrapper" style="transform-origin: center;">
       <image
+        id="map-roads"
         xlink:href="maps/roads.svg"
         opacity="30%"
         width="314.1592653589905"
@@ -306,6 +307,8 @@
         /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom, year: 2000  },
         /* 17 */ { id: 'intro-graf10', anchor: top,    at: top    },
         /* 18 */ { id: 'main-content', anchor: top,    at: top    },
+        /* 19 */ { id: 'main-content', anchor: bottom, at: center },
+        /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
       ]
 
       const formatYear = year => {
@@ -325,7 +328,8 @@
         { id: 'map-1980', shown: 14 },
         { id: 'map-2000', shown: 16 },
         { id: 'year', shown: 1, hidden: 19 },
-        { id: 'map-properties', shown: -1, hidden: 18 },
+        { id: 'map-properties', stages: [-1, 18, 20] },
+        { id: 'map-2002', shown: 20 },
       ]
 
       const mapTransforms = [
@@ -335,6 +339,7 @@
         { stage: 8, scale: 2, translate: [40, -30] },
         { stage: 12, scale: 1.5, translate: [40, -40] },
         { stage: 17, scale: 1, translate: [0, 0] },
+        { stage: 20, scale: 2, translate: [40, -30] },
       ]
       const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
 
@@ -349,7 +354,8 @@
         });
         const stage = stagePositions.reduce((acc, val, i) => val < 0 ? i : acc, -1);
         const pos = stagePositions[stage] ?? -document.scrollingElement.scrollTop;
-        const frac = pos / (pos - stagePositions[stage + 1]);
+        const frac = pos / (pos - (stagePositions[stage + 1] ?? (document.scrollingElement.scrollTop - document.scrollingElement.clientHeight)));
+        // magic from d3
         const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
         const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
 
@@ -357,16 +363,21 @@
 
         for (const automation of automations) {
           const el = document.getElementById(automation.id);
-          if (stage < automation.shown - 1) {
+          const stages = automation.stages ?? [automation.shown, automation.hidden];
+          if (stage < stages[0] - 1 || (stages.length > 1 && stage >= stages[stages.length - 1])) {
             el.style.opacity = 0;
-          } else if (stage === automation.shown - 1) {
-            el.style.opacity = frac;
-          } else if (!('hidden' in automation) || stage < automation.hidden - 1) {
-            el.style.opacity = 1;
-          } else if (stage === automation.hidden - 1) {
-            el.style.opacity = 1 - frac;
           } else {
-            el.style.opacity = 0;
+            for (let i = 0; i < stages.length; i++) {
+              const isShown = i % 2 === 0;
+              if (stage === stages[i] - 1) {
+                el.style.opacity = isShown ? frac : 1 - frac;
+                break;
+              }
+              if (stage === stages[i]) {
+                el.style.opacity = isShown ? 1 : 0;
+                break;
+              }
+            }
           }
         }
 
@@ -402,6 +413,10 @@
           $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
         }
 
+        if (stage < 16) {
+          $('#map-roads').css('opacity', 0.3);
+        }
+
         switch (stage) {
         case -1:
           $('#map-2022').css('--fill', redToTan(frac));
@@ -414,33 +429,25 @@
         case 3:
           $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
           break;
-        case 16:
-          $('#map-transform-wrapper').attr('opacity', `1`)
-          break;
         case 17:
-          $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
+          $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
           break;
         case 18:
-          $('#map-transform-wrapper').attr('opacity', `.5`)
+          $('#map-roads').css('opacity', 0.15)
           break;
         case 19:
           $('.map').attr('opacity', 0)
           $('#slider-year').css('opacity', 0);
           break;
+        case 20:
+          $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
+          break;
        }
        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         // you're at the bottom of the page
           $('#slider-year').css('opacity', 1);
-          $('#map-2002').css('opacity', 1)
-          $('#map-transform-wrapper').attr('opacity', 1)
-          $('#map-properties').css('opacity', 1)
-          $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
         } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
-          $('.map').css('opacity', `0`)
           $('#map-2022').css('--fill', "var(--red)");
-          $('#map-transform-wrapper').attr('opacity', `.5`)
-          $('#map-2002').css('opacity', 0)
-          $('#map-transform-wrapper').attr('transform', `scale(1) translate(0,0)`)
           $('#slider-year').css('opacity', 0);
         }
       }
