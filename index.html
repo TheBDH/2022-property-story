@@ -30,7 +30,7 @@
         x="0"
         y="0"
       />
-      <g class="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
+      <g id="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
         <g id="intro-maps">
           <g class="map" id="map-1770">{% include_map '1770' %}</g>
           <g class="map" id="map-1900">{% include_map '1900' %}</g>
@@ -83,17 +83,17 @@
       </div>
       <p style="text-align:center">&darr; SCROLL &darr;</p>
     </div>
+  </div>
 
-    <div id="sticky-header">
-      <div id="headline-wrapper">
-        <h1>How Brown’s campus and property holdings have changed from 1764 to today</h1>
-      </div>
+  <div id="hed">
+    <div id="headline-wrapper">
+      <h1>How Brown’s campus and property holdings have changed from 1764 to today</h1>
+    </div>
 
-      <div class="byline">
-        <p>Reporting by <b>Will&nbsp;Kubzansky</b>, <b>Katy&nbsp;Pickens</b>, and <b>Rhea&nbsp;Rasquina</b></p>
-        <p>Web design & layout by <b>Ashley&nbsp;Cai</b>, <b>Jed&nbsp;Fox</b> and&nbsp;<b>Neil&nbsp;Mehta</b></p>
-        <p>Additional reporting by <b>Stella&nbsp;Chen</b></p>
-      </div>
+    <div class="byline">
+      <p>Reporting by <b>Will&nbsp;Kubzansky</b>, <b>Katy&nbsp;Pickens</b>, and <b>Rhea&nbsp;Rasquina</b></p>
+      <p>Web design & layout by <b>Ashley&nbsp;Cai</b>, <b>Jed&nbsp;Fox</b> and&nbsp;<b>Neil&nbsp;Mehta</b></p>
+      <p>Additional reporting by <b>Stella&nbsp;Chen</b></p>
     </div>
   </div>
 
@@ -289,7 +289,7 @@
       const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
 
       document.scrollingElement.clie
-      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.0, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
+      var stages = [0.6, .8, 1.8, 2.2, 2.6, 3.2, 3.6, 4.3, 4.4, 5.3, 5.8, 6.2, 6.6, 7.4,7.8,8.4,9.2,9.8,10.6,11,18,18.2];
       function scaleStages(x) {
         if (x.matches) {
           stages = stages.map(function(z) { return z * ((1+(window.innerWidth/window.innerHeight))-.2) ; });
@@ -322,6 +322,7 @@
         { id: 'map-1980', shown: 14 },
         { id: 'map-2000', shown: 16 },
         { id: 'year', shown: 1, hidden: 19 },
+        { id: 'map-properties', shown: -1, hidden: 18 },
       ]
 
       const mapTransforms = [
@@ -412,9 +413,6 @@
         case 8:
           $('#year').html(formatYear(1920))
           break;
-        case 9:
-          // $('#map-transform-wrapper').attr('transform', `scale(2) translate(30, -30)`)
-          break;
         case 10:
           $('#year').html(formatYear(1940))
           break;
@@ -426,16 +424,16 @@
           break;
         case 16:
           $('#year').html(formatYear(2000))
-          break;
-        case 17:
           $('#map-transform-wrapper').attr('opacity', `1`)
           break;
-        case 18:
+        case 17:
           $('#map-transform-wrapper').attr('opacity', `${1-frac/2}`)
+          break;
+        case 18:
+          $('#map-transform-wrapper').attr('opacity', `.5`)
           break;
         case 19:
           $('.map').attr('opacity', 0)
-          $('#map-transform-wrapper').attr('opacity', `.5`)
           $('#slider-year').css('opacity', 0);
           break;
        }
