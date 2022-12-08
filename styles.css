@@ -355,6 +355,7 @@ a {
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
+  width: 100px;
 }
 #year span {
   display: inline-block;
