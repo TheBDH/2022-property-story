@@ -287,25 +287,25 @@
 
       const [top, center, bottom] = [0, 0.5, 1]
       const stages = [
-        /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top },
+        /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top,    year: 2022  },
         /*  1 */ { id: 'hed',          anchor: center, at: center },
         /*  2 */ { id: 'intro-graf2',  anchor: center, at: center },
-        /*  3 */ { id: 'intro-graf3',  anchor: top,    at: bottom },
-        /*  4 */ { id: 'intro-graf3',  anchor: center, at: 0.75 },
+        /*  3 */ { id: 'intro-graf3',  anchor: top,    at: bottom, ease: false },
+        /*  4 */ { id: 'intro-graf3',  anchor: center, at: 0.75,   year: 1770  },
         /*  5 */ { id: 'intro-graf4',  anchor: top,    at: bottom },
-        /*  6 */ { id: 'intro-graf4',  anchor: center, at: center },
+        /*  6 */ { id: 'intro-graf4',  anchor: center, at: center, year: 1900  },
         /*  7 */ { id: 'intro-graf5',  anchor: top,    at: bottom },
-        /*  8 */ { id: 'intro-graf5',  anchor: center, at: 0.75 },
+        /*  8 */ { id: 'intro-graf5',  anchor: center, at: 0.75,   year: 1920  },
         /*  9 */ { id: 'intro-graf6',  anchor: top,    at: bottom },
-        /* 10 */ { id: 'intro-graf6',  anchor: bottom, at: top },
-        /* 11 */ { id: 'intro-graf7',  anchor: center, at: 0.75 },
-        /* 12 */ { id: 'intro-graf7',  anchor: center, at: 0.25 },
+        /* 10 */ { id: 'intro-graf6',  anchor: bottom, at: top,    year: 1940  },
+        /* 11 */ { id: 'intro-graf7',  anchor: center, at: 0.75   },
+        /* 12 */ { id: 'intro-graf7',  anchor: center, at: 0.25,   year: 1960  },
         /* 13 */ { id: 'intro-graf8',  anchor: center, at: center },
-        /* 14 */ { id: 'intro-graf9',  anchor: top,    at: bottom },
+        /* 14 */ { id: 'intro-graf9',  anchor: top,    at: bottom, year: 1980  },
         /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
-        /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom },
-        /* 17 */ { id: 'intro-graf10', anchor: top,    at: top },
-        /* 18 */ { id: 'main-content', anchor: top,    at: top },
+        /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom, year: 2000  },
+        /* 17 */ { id: 'intro-graf10', anchor: top,    at: top    },
+        /* 18 */ { id: 'main-content', anchor: top,    at: top    },
       ]
 
       const formatYear = year => {
@@ -351,9 +351,9 @@
         const pos = stagePositions[stage] ?? -document.scrollingElement.scrollTop;
         const frac = pos / (pos - stagePositions[stage + 1]);
         const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
-        const interpolate = (from, to) => from + (to - from) * easeCubic(frac);
+        const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
 
-        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${(easeCubic(frac) * 100).toFixed(1)}%`);
+        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
 
         for (const automation of automations) {
           const el = document.getElementById(automation.id);
@@ -393,6 +393,11 @@
             break;
           }
         }
+
+        if (stages[stage]?.year) {
+          $('#year').html(formatYear(stages[stage].year))
+        }
+
         if (stage > mapTransforms[mapTransforms.length - 1].stage) {
           $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
         }
@@ -401,36 +406,15 @@
         case -1:
           $('#map-2022').css('--fill', redToTan(frac));
 
-          $('#year').html(formatYear(2022))
           $('#slider-year').css('opacity', 0);
           break;
         case 0:
-          $('#year').html(formatYear(2022))
           // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
           break;
         case 3:
           $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
           break;
-        case 4:
-          $('#year').html(formatYear(1770))
-          break;
-        case 6:
-          $('#year').html(formatYear(1900))
-          break;
-        case 8:
-          $('#year').html(formatYear(1920))
-          break;
-        case 10:
-          $('#year').html(formatYear(1940))
-          break;
-        case 12:
-          $('#year').html(formatYear(1960))
-          break;
-        case 14:
-          $('#year').html(formatYear(1980))
-          break;
         case 16:
-          $('#year').html(formatYear(2000))
           $('#map-transform-wrapper').attr('opacity', `1`)
           break;
         case 17:
@@ -448,7 +432,8 @@
         // you're at the bottom of the page
           $('#slider-year').css('opacity', 1);
           $('#map-2002').css('opacity', 1)
-          $('#map-transform-wrapper').attr('opacity', `1`)
+          $('#map-transform-wrapper').attr('opacity', 1)
+          $('#map-properties').css('opacity', 1)
           $('#map-transform-wrapper').attr('transform', `scale(2) translate(40, -30)`)
         } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
           $('.map').css('opacity', `0`)
