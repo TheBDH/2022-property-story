@@ -286,6 +286,8 @@
       const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
       const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
 
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       const [top, center, bottom] = [0, 0.5, 1]
       const stages = [
         /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top,    year: 2022  },
@@ -342,6 +344,7 @@
         { stage: 17, scale: 1, translate: [0, 0] },
         { stage: 20, scale: 1.7, translate: [40, -40] },
       ]
+      const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
       const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
 
       const onScroll = () => {
@@ -383,6 +386,11 @@
         }
 
         for (let i = 0; i < mapTransforms.length; i++) {
+          if (prefersReducedMotion) {
+            $('#map-transform-wrapper').attr('transform', formatTransform(reducedMotionTransform));
+            break;
+          }
+
           const t = mapTransforms[i];
           if (i === 0 && stage === -1) {
             // $('#map-transform-wrapper').attr('transform', `scale(${t.scale}) translate(${t.translate.join(',')})`)
