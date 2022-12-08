@@ -60,9 +60,6 @@
     </g>
   </svg>
   </div>
-  <div id="curtains">
-
-  </div>
   <div id="header">
     <div>
       <a href="https://browndailyherald.com" style="align-self: center;">
@@ -97,8 +94,6 @@
       <p>Additional reporting by <b>Stella&nbsp;Chen</b></p>
     </div>
   </div>
-
-
 
   <div id="content">
     <div class="over-map" id="intro-graf2">
@@ -275,204 +270,202 @@
     <div id="slider-year" class="year">2002</div>
     <input id="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
   </div>
-  <div id="footer">
-    <div style="display: flex; flex-direction: row; color: black; justify-content: center;">
-      <p style="font-size: 1.18rem">Copyright © 2022 The Brown Daily Herald, Inc.&nbsp;•</p>
-      <button id="to-top" style="font-family: freight-text-pro, serif; font-size: 1.18rem;">Back to top</button>
-    </div>
-    <script type="module">
-      import Color from './js/color.js';
-      const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
-      const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
-      const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
+  <footer>
+    <span>Copyright © 2022</span>
+    <span>The Brown Daily Herald, Inc.</span>
+    <div class="footer-bullet">•</div>
+    <button id="to-top">Back to top</button>
+  </footer>
 
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<script type="module">
+    import Color from './js/color.js';
+    const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
+    const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
+    const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
 
-      const [top, center, bottom] = [0, 0.5, 1]
-      const stages = [
-        /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top,    year: 2022  },
-        /*  1 */ { id: 'hed',          anchor: center, at: center },
-        /*  2 */ { id: 'intro-graf2',  anchor: center, at: center },
-        /*  3 */ { id: 'intro-graf3',  anchor: top,    at: bottom, ease: false },
-        /*  4 */ { id: 'intro-graf3',  anchor: center, at: 0.75,   year: 1770  },
-        /*  5 */ { id: 'intro-graf4',  anchor: top,    at: bottom },
-        /*  6 */ { id: 'intro-graf4',  anchor: center, at: center, year: 1900  },
-        /*  7 */ { id: 'intro-graf5',  anchor: top,    at: bottom },
-        /*  8 */ { id: 'intro-graf5',  anchor: center, at: 0.75,   year: 1920  },
-        /*  9 */ { id: 'intro-graf6',  anchor: top,    at: bottom },
-        /* 10 */ { id: 'intro-graf6',  anchor: bottom, at: top,    year: 1940  },
-        /* 11 */ { id: 'intro-graf7',  anchor: center, at: 0.75   },
-        /* 12 */ { id: 'intro-graf7',  anchor: center, at: 0.25,   year: 1960  },
-        /* 13 */ { id: 'intro-graf8',  anchor: center, at: center },
-        /* 14 */ { id: 'intro-graf9',  anchor: top,    at: bottom, year: 1980  },
-        /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
-        /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom, year: 2000  },
-        /* 17 */ { id: 'intro-graf10', anchor: top,    at: top    },
-        /* 18 */ { id: 'main-content', anchor: top,    at: 0.25   },
-        /* 19 */ { id: 'main-content', anchor: bottom, at: center },
-        /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
-      ]
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const formatYear = year => {
-        const s = year.toString();
-        return s.split('').map(s => `<span>${s}</span>`).join('')
-      }
+    const [top, center, bottom] = [0, 0.5, 1]
+    const stages = [
+      /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top,    year: 2022  },
+      /*  1 */ { id: 'hed',          anchor: center, at: center },
+      /*  2 */ { id: 'intro-graf2',  anchor: center, at: center },
+      /*  3 */ { id: 'intro-graf3',  anchor: top,    at: bottom, ease: false },
+      /*  4 */ { id: 'intro-graf3',  anchor: center, at: 0.75,   year: 1770  },
+      /*  5 */ { id: 'intro-graf4',  anchor: top,    at: bottom },
+      /*  6 */ { id: 'intro-graf4',  anchor: center, at: center, year: 1900  },
+      /*  7 */ { id: 'intro-graf5',  anchor: top,    at: bottom },
+      /*  8 */ { id: 'intro-graf5',  anchor: center, at: 0.75,   year: 1920  },
+      /*  9 */ { id: 'intro-graf6',  anchor: top,    at: bottom },
+      /* 10 */ { id: 'intro-graf6',  anchor: bottom, at: top,    year: 1940  },
+      /* 11 */ { id: 'intro-graf7',  anchor: center, at: 0.75   },
+      /* 12 */ { id: 'intro-graf7',  anchor: center, at: 0.25,   year: 1960  },
+      /* 13 */ { id: 'intro-graf8',  anchor: center, at: center },
+      /* 14 */ { id: 'intro-graf9',  anchor: top,    at: bottom, year: 1980  },
+      /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
+      /* 16 */ { id: 'intro-graf10', anchor: bottom, at: bottom, year: 2000  },
+      /* 17 */ { id: 'intro-graf10', anchor: top,    at: top    },
+      /* 18 */ { id: 'main-content', anchor: top,    at: 0.25   },
+      /* 19 */ { id: 'main-content', anchor: bottom, at: center },
+      /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
+    ]
 
-      const automations = [
-        { id: 'intro-maps', shown: -1, hidden: 19 },
-        { id: 'map-2022', shown: -1, hidden: 3 },
-        { id: 'map-1770', shown: 4 },
-        { id: 'map-1900', shown: 6 },
-        { id: 'map-onefinancial', shown: 6, hidden: 8 },
-        { id: 'map-1920', shown: 8 },
-        { id: 'map-1940', shown: 10 },
-        { id: 'map-1960', shown: 12 },
-        { id: 'map-1980', shown: 14 },
-        { id: 'map-2000', shown: 16 },
-        { id: 'year', shown: 1, hidden: 19 },
-        { id: 'map-properties', stages: [-1, 18, 20] },
-        { id: 'map-2002', shown: 20 },
-        { id: 'slider-year', shown: 20 },
-      ]
+    const formatYear = year => {
+      const s = year.toString();
+      return s.split('').map(s => `<span>${s}</span>`).join('')
+    }
 
-      const mapTransforms = [
-        { stage: -1, scale: 2, translate: [40, -30] },
-        { stage: 4, scale: 2, translate: [40, -40] },
-        { stage: 6, scale: 1, translate: [40, -5] },
-        { stage: 8, scale: 2, translate: [40, -30] },
-        { stage: 12, scale: 1.5, translate: [40, -40] },
-        { stage: 17, scale: 1, translate: [0, 0] },
-        { stage: 20, scale: 1.7, translate: [40, -40] },
-      ]
-      const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
-      const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
+    const automations = [
+      { id: 'intro-maps', shown: -1, hidden: 19 },
+      { id: 'map-2022', shown: -1, hidden: 3 },
+      { id: 'map-1770', shown: 4 },
+      { id: 'map-1900', shown: 6 },
+      { id: 'map-onefinancial', shown: 6, hidden: 8 },
+      { id: 'map-1920', shown: 8 },
+      { id: 'map-1940', shown: 10 },
+      { id: 'map-1960', shown: 12 },
+      { id: 'map-1980', shown: 14 },
+      { id: 'map-2000', shown: 16 },
+      { id: 'year', shown: 1, hidden: 19 },
+      { id: 'map-properties', stages: [-1, 18, 20] },
+      { id: 'map-2002', shown: 20 },
+      { id: 'slider-year', shown: 20 },
+    ]
 
-      const onScroll = () => {
-        const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
+    const mapTransforms = [
+      { stage: -1, scale: 2, translate: [40, -30] },
+      { stage: 4, scale: 2, translate: [40, -40] },
+      { stage: 6, scale: 1, translate: [40, -5] },
+      { stage: 8, scale: 2, translate: [40, -30] },
+      { stage: 12, scale: 1.5, translate: [40, -40] },
+      { stage: 17, scale: 1, translate: [0, 0] },
+      { stage: 20, scale: 1.7, translate: [40, -40] },
+    ]
+    const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
+    const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
 
-        const stagePositions = stages.map(({ id, anchor, at }) => {
-          const el = document.getElementById(id);
-          const anchorPos = el.offsetTop + (el.offsetHeight * anchor);
-          const atPos = document.scrollingElement.scrollTop + (document.scrollingElement.clientHeight * at);
-          return anchorPos - atPos;
-        });
-        const stage = stagePositions.reduce((acc, val, i) => val < 0 ? i : acc, -1);
-        const pos = stagePositions[stage] ?? -document.scrollingElement.scrollTop;
-        const frac = pos / (pos - (stagePositions[stage + 1] ?? (document.scrollingElement.scrollTop - document.scrollingElement.clientHeight)));
-        // magic from d3
-        const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
-        const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
+    const onScroll = () => {
+      const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
 
-        $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
+      const stagePositions = stages.map(({ id, anchor, at }) => {
+        const el = document.getElementById(id);
+        const anchorPos = el.offsetTop + (el.offsetHeight * anchor);
+        const atPos = document.scrollingElement.scrollTop + (document.scrollingElement.clientHeight * at);
+        return anchorPos - atPos;
+      });
+      const stage = stagePositions.reduce((acc, val, i) => val < 0 ? i : acc, -1);
+      const pos = stagePositions[stage] ?? -document.scrollingElement.scrollTop;
+      const frac = pos / (pos - (stagePositions[stage + 1] ?? (document.scrollingElement.scrollTop - document.scrollingElement.clientHeight)));
+      // magic from d3
+      const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+      const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
 
-        for (const automation of automations) {
-          const el = document.getElementById(automation.id);
-          const stages = automation.stages ?? [automation.shown, automation.hidden];
-          if (stage < stages[0] - 1 || (stages.length % 2 === 0 && stage >= stages[stages.length - 1])) {
-            el.style.opacity = 0;
-          } else {
-            for (let i = 0; i < stages.length; i++) {
-              const isShown = i % 2 === 0;
-              if (stage === stages[i] - 1) {
-                el.style.opacity = isShown ? frac : 1 - frac;
-                break;
-              }
-              if (stage === stages[i]) {
-                el.style.opacity = isShown ? 1 : 0;
-                break;
-              }
+      $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
+
+      for (const automation of automations) {
+        const el = document.getElementById(automation.id);
+        const stages = automation.stages ?? [automation.shown, automation.hidden];
+        if (stage < stages[0] - 1 || (stages.length % 2 === 0 && stage >= stages[stages.length - 1])) {
+          el.style.opacity = 0;
+        } else {
+          for (let i = 0; i < stages.length; i++) {
+            const isShown = i % 2 === 0;
+            if (stage === stages[i] - 1) {
+              el.style.opacity = isShown ? frac : 1 - frac;
+              break;
+            }
+            if (stage === stages[i]) {
+              el.style.opacity = isShown ? 1 : 0;
+              break;
             }
           }
         }
+      }
 
-        for (let i = 0; i < mapTransforms.length; i++) {
-          if (prefersReducedMotion) {
-            $('#map-transform-wrapper').attr('transform', formatTransform(reducedMotionTransform));
-            break;
-          }
-
-          const t = mapTransforms[i];
-          if (i === 0 && stage === -1) {
-            // $('#map-transform-wrapper').attr('transform', `scale(${t.scale}) translate(${t.translate.join(',')})`)
-            $('#map-transform-wrapper').attr('transform', formatTransform(t));
-            break;
-          }
-          const prev = mapTransforms[i - 1];
-          if (stage === t.stage - 1) {
-            $('#map-transform-wrapper').attr('transform', formatTransform({
-              scale: interpolate(prev.scale, t.scale),
-              translate: [
-                interpolate(prev.translate[0], t.translate[0]),
-                interpolate(prev.translate[1], t.translate[1])
-              ]
-            }))
-            break;
-          }
-          if (stage === t.stage) {
-            $('#map-transform-wrapper').attr('transform', formatTransform(t));
-            break;
-          }
+      for (let i = 0; i < mapTransforms.length; i++) {
+        if (prefersReducedMotion) {
+          $('#map-transform-wrapper').attr('transform', formatTransform(reducedMotionTransform));
+          break;
         }
 
-        if (stages[stage]?.year) {
-          $('#year').html(formatYear(stages[stage].year))
+        const t = mapTransforms[i];
+        if (i === 0 && stage === -1) {
+          // $('#map-transform-wrapper').attr('transform', `scale(${t.scale}) translate(${t.translate.join(',')})`)
+          $('#map-transform-wrapper').attr('transform', formatTransform(t));
+          break;
         }
-
-        if (stage > mapTransforms[mapTransforms.length - 1].stage) {
-          $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
+        const prev = mapTransforms[i - 1];
+        if (stage === t.stage - 1) {
+          $('#map-transform-wrapper').attr('transform', formatTransform({
+            scale: interpolate(prev.scale, t.scale),
+            translate: [
+              interpolate(prev.translate[0], t.translate[0]),
+              interpolate(prev.translate[1], t.translate[1])
+            ]
+          }))
+          break;
         }
-
-        if (stage < 16) {
-          $('#map-roads').css('opacity', 0.3);
-        }
-
-        switch (stage) {
-        case -1:
-          $('#map-2022').css('--fill', redToTan(frac));
+        if (stage === t.stage) {
+          $('#map-transform-wrapper').attr('transform', formatTransform(t));
           break;
-        case 0:
-          // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
-          break;
-        case 3:
-          $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
-          break;
-        case 17:
-          $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
-          break;
-        case 18:
-          $('#map-roads').css('opacity', 0.15)
-          break;
-        case 19:
-          $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
-          break;
-       }
-       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        // you're at the bottom of the page
-        } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
-          $('#map-2022').css('--fill', "var(--red)");
         }
       }
 
-      onScroll()
-      document.addEventListener('scroll', onScroll)
-      $("#to-top").click(function () {
-        $("html, body").animate({scrollTop: 0}, 1000);
-      });
-
-      var slider = document.getElementById("slider");
-      var output = document.getElementById("slider-year");
-
-      slider.oninput = function() {
-        output.innerHTML = formatYear(this.value);
-        $(`#map-${(parseInt(this.value)-2)}`).css('opacity', 0)
-        $(`#map-${(parseInt(this.value)+2)}`).css('opacity', 0)
-        $(`#map-${this.value}`).css('opacity', 1)
+      if (stages[stage]?.year) {
+        $('#year').html(formatYear(stages[stage].year))
       }
-    </script>
 
+      if (stage > mapTransforms[mapTransforms.length - 1].stage) {
+        $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
+      }
 
+      if (stage < 16) {
+        $('#map-roads').css('opacity', 0.3);
+      }
 
-  </div>
+      switch (stage) {
+      case -1:
+        $('#map-2022').css('--fill', redToTan(frac));
+        break;
+      case 0:
+        // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
+        break;
+      case 3:
+        $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
+        break;
+      case 17:
+        $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
+        break;
+      case 18:
+        $('#map-roads').css('opacity', 0.15)
+        break;
+      case 19:
+        $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
+        break;
+      }
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      // you're at the bottom of the page
+      } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
+        $('#map-2022').css('--fill', "var(--red)");
+      }
+    }
+
+    onScroll()
+    document.addEventListener('scroll', onScroll)
+    $("#to-top").click(function () {
+      $("html, body").animate({scrollTop: 0}, 1000);
+    });
+
+    var slider = document.getElementById("slider");
+    var output = document.getElementById("slider-year");
+
+    slider.oninput = function() {
+      output.innerHTML = formatYear(this.value);
+      $(`#map-${(parseInt(this.value)-2)}`).css('opacity', 0)
+      $(`#map-${(parseInt(this.value)+2)}`).css('opacity', 0)
+      $(`#map-${this.value}`).css('opacity', 1)
+    }
+  </script>
+
 </body>
-
 </html>

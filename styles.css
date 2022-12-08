@@ -182,16 +182,6 @@ h2{
   max-width: 800px;
 }
 
-
-#curtains{
-  z-index: -1;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  /* background-color: rgba(245, 243, 239, 0.8); */
-}
-
 #byline{
   width: 100vw;
   display: flex;
@@ -209,16 +199,27 @@ h2{
   margin: auto;
 }
 
-#footer{
+footer{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  color: var(--offblack);
+  font-size: 1.18rem;
+  gap: 0.5ch;
+  margin-block: 1em;
 }
 @media (max-width: 768px) {
-  #footer > div {
-    flex-direction: column !important;
+  footer {
+    flex-direction: column;
   }
+  .footer-bullet {
+    display: none;
+  }
+}
+
+.footer-bullet {
+  margin-inline: 0.5em;
 }
 
 
@@ -228,6 +229,7 @@ h2{
   color: black;
   padding: 0;
   text-decoration: underline;
+  font: inherit;
 }
 
 #to-top:hover{
