@@ -11,62 +11,7 @@
   <div id="debug-overlay"></div>
   <div id="year-1" class="year"></div>
   <div id="year-2" class="year"></div>
-  <div class="maps">
-  <svg viewBox="0 0 314.1592653589905 139.13084045264986" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-      <linearGradient id="fade">
-        <stop offset="0%" stop-color="#F5F3EF" stop-opacity="1.0"/>
-        <stop offset="7%" stop-color="#F5F3EF" stop-opacity="0.0"/>
-        <stop offset="93%" stop-color="#F5F3EF" stop-opacity="0.0"/>
-        <stop offset="100%" stop-color="#F5F3EF" stop-opacity="1.0"/>
-      </linearGradient>
-      <linearGradient id="fade-vertical" x1="0" y1="0" x2="0" y2="1" xlink:href="#fade" />
-    </defs>
-    <g id="map-transform-wrapper" style="transform-origin: center;">
-      <image
-        id="map-roads"
-        xlink:href="maps/roads.svg"
-        opacity="30%"
-        width="314.1592653589905"
-        height="160.21752962021856"
-        x="0"
-        y="0"
-      />
-      <g id="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
-        <g class="map" style="opacity: 0" id="first-map">
-          <use xlink:href="#map-2022-raw" />
-        </g>
 
-        <g id="intro-maps">
-          <g class="map" id="map-1770">{% include_map '1770' %}</g>
-          <g class="map" id="map-1900">{% include_map '1900' %}</g>
-          <g class="map" id="map-1920">{% include_map '1920' %}</g>
-          <g class="map" id="map-1940">{% include_map '1940' %}</g>
-          <g class="map" id="map-1960">{% include_map '1960' %}</g>
-          <g class="map" id="map-1980">{% include_map '1980' %}</g>
-          <g class="map" id="map-2000">{% include_map '2000' %}</g>
-          <g class="map" id="map-one-financial-plaza">{% include_map 'one-financial-plaza' %}</g>
-        </g>
-
-        <g id="modern-maps">
-          <g class="map" id="map-2002">{% include_map '2002' %}</g>
-          <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
-          <g class="map" style="opacity: 0" id="map-2006">{% include_map '2006' %}</g>
-          <g class="map" style="opacity: 0" id="map-2008">{% include_map '2008' %}</g>
-          <g class="map" style="opacity: 0" id="map-2010">{% include_map '2010' %}</g>
-          <g class="map" style="opacity: 0" id="map-2012">{% include_map '2012' %}</g>
-          <g class="map" style="opacity: 0" id="map-2014">{% include_map '2014' %}</g>
-          <g class="map" style="opacity: 0" id="map-2016">{% include_map '2016' %}</g>
-          <g class="map" style="opacity: 0" id="map-2018">{% include_map '2018' %}</g>
-          <g class="map" style="opacity: 0" id="map-2020">{% include_map '2020' %}</g>
-          <g class="map" style="opacity: 0" id="map-2022">{% include_map '2022' %}</g>
-        </g>
-      </g>
-        <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
-        <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade-vertical)" /> -->
-    </g>
-  </svg>
-  </div>
   <div id="header">
     <div>
       <a href="https://browndailyherald.com" style="align-self: center;">
@@ -304,6 +249,63 @@
     <div class="footer-bullet">•</div>
     <button id="to-top">Back to top</button>
   </footer>
+
+    <div class="maps">
+    <svg viewBox="0 0 314.1592653589905 139.13084045264986" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <linearGradient id="fade">
+          <stop offset="0%" stop-color="#F5F3EF" stop-opacity="1.0"/>
+          <stop offset="7%" stop-color="#F5F3EF" stop-opacity="0.0"/>
+          <stop offset="93%" stop-color="#F5F3EF" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#F5F3EF" stop-opacity="1.0"/>
+        </linearGradient>
+        <linearGradient id="fade-vertical" x1="0" y1="0" x2="0" y2="1" xlink:href="#fade" />
+      </defs>
+      <g id="map-transform-wrapper" style="transform-origin: center;">
+        <image
+          id="map-roads"
+          xlink:href="maps/roads.svg"
+          opacity="30%"
+          width="314.1592653589905"
+          height="160.21752962021856"
+          x="0"
+          y="0"
+        />
+        <g id="map-properties" transform="translate(-142.92036732050474, -33.879346293600975)">
+          <g class="map" style="opacity: 0" id="first-map">
+            <use xlink:href="#map-2022-raw" />
+          </g>
+
+          <g id="intro-maps">
+            <g class="map" id="map-1770">{% include_map '1770' %}</g>
+            <g class="map" id="map-1900">{% include_map '1900' %}</g>
+            <g class="map" id="map-1920">{% include_map '1920' %}</g>
+            <g class="map" id="map-1940">{% include_map '1940' %}</g>
+            <g class="map" id="map-1960">{% include_map '1960' %}</g>
+            <g class="map" id="map-1980">{% include_map '1980' %}</g>
+            <g class="map" id="map-2000">{% include_map '2000' %}</g>
+            <g class="map" id="map-one-financial-plaza">{% include_map 'one-financial-plaza' %}</g>
+          </g>
+
+          <g id="modern-maps">
+            <g class="map" id="map-2002">{% include_map '2002' %}</g>
+            <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
+            <g class="map" style="opacity: 0" id="map-2006">{% include_map '2006' %}</g>
+            <g class="map" style="opacity: 0" id="map-2008">{% include_map '2008' %}</g>
+            <g class="map" style="opacity: 0" id="map-2010">{% include_map '2010' %}</g>
+            <g class="map" style="opacity: 0" id="map-2012">{% include_map '2012' %}</g>
+            <g class="map" style="opacity: 0" id="map-2014">{% include_map '2014' %}</g>
+            <g class="map" style="opacity: 0" id="map-2016">{% include_map '2016' %}</g>
+            <g class="map" style="opacity: 0" id="map-2018">{% include_map '2018' %}</g>
+            <g class="map" style="opacity: 0" id="map-2020">{% include_map '2020' %}</g>
+            <g class="map" style="opacity: 0" id="map-2022">{% include_map '2022' %}</g>
+          </g>
+        </g>
+          <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
+          <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade-vertical)" /> -->
+      </g>
+    </svg>
+  </div>
 
 <script type="module">
     import Color from './js/color.js';
