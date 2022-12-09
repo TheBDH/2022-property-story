@@ -335,12 +335,21 @@
       { id: 'modern-maps', stages: [18, 19] },
     ]
 
-    const mapTransforms = [
+    const mapTransformsDesktop = [
       { stage: -1, scale: 2, translate: [40, -30] },
       { stage: 4, scale: 2, translate: [40, -40] },
       { stage: 6, scale: 1, translate: [40, -5] },
       { stage: 8, scale: 2, translate: [40, -30] },
       { stage: 12, scale: 1.5, translate: [40, -40] },
+      { stage: 19, scale: 1, translate: [0, 0] },
+    ]
+    const mapTransformsMobile = [
+      { stage: -1, scale: 1, translate: [40, -20] },
+      { stage: 4, scale: 2, translate: [38, -40] },
+      { stage: 6, scale: 1.3, translate: [30, 10] },
+      { stage: 8, scale: 2, translate: [40, -30] },
+      { stage: 12, scale: 2, translate: [40, -30] },
+      { stage: 14, scale: 1.5, translate: [40, -30] },
       { stage: 19, scale: 1, translate: [0, 0] },
     ]
     const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
@@ -361,6 +370,7 @@
       // magic from d3
       const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
       const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
+      const isMobile = window.innerWidth < 768;
 
       $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
 
@@ -380,6 +390,7 @@
         }
       }
 
+      const mapTransforms = isMobile ? mapTransformsMobile : mapTransformsDesktop;
       for (let i = 0; i < mapTransforms.length; i++) {
         if (prefersReducedMotion) {
           $('#map-transform-wrapper').attr('transform', formatTransform(reducedMotionTransform));

@@ -317,7 +317,9 @@ a {
   display: block;
   margin: auto;
   margin-bottom: 0;
-  margin-top: 2em;
+}
+.separator:not(:first-child) {
+  margin-top: 10em;
 }
 
 .separator > path {
