@@ -163,6 +163,11 @@ h2 {
   }
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
 #hed {
   height: 100vh;
   display: flex;
@@ -345,7 +350,7 @@ a {
   opacity: 1; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
   transition: opacity 0.2s;
-  margin-top: 10em;
+  margin-top: 2em;
 }
 
 #slider::-webkit-slider-thumb {
