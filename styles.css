@@ -369,6 +369,8 @@ a {
   color: var(--red);
   width: 100px;
   text-align: center;
+  text-shadow: 2px 0 0 var(--offwhite), -2px 0 0 var(--offwhite), 0 2px 0 var(--offwhite), 0 -2px 0 var(--offwhite),
+               1px 1px var(--offwhite), -1px -1px 0 var(--offwhite), 1px -1px 0 var(--offwhite), -1px 1px 0 var(--offwhite);
 }
 .year span {
   display: inline-block;
