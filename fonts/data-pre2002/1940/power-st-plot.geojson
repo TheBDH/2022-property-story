@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"name": "power-st-plot",
+"features": [
+{ "type": "Feature", "properties": { "area_ac": "1.31999541", "area_sf": "43560", "ass_bldg": "5719700", "ass_land": "1530400", "ass_total": "7250100", "cama_link": "160633", "lot": "633", "owner_add": null, "owner_city": "Providence", "owner_ctry": null, "owner_zip": "02906", "ownername": "Brown University", "ownerstate": "RI", "parc_add": "101 Power St", "plat": "16", "propid": "016-0633-0000", "shape_area": 57651.527240800002, "shape_leng": 1007.37053962, "tax_year": null, "unit": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -71.398679614101738, 41.822509781135139 ], [ -71.399898022780974, 41.822417000631788 ], [ -71.39989802872914, 41.822417045653957 ], [ -71.399944449564416, 41.822897547974222 ], [ -71.399944450727418, 41.822897574085097 ], [ -71.398772049247526, 41.82298955020466 ], [ -71.398771966177605, 41.822989560935525 ], [ -71.398771962607753, 41.822989534822526 ], [ -71.398679614101738, 41.822509781135139 ] ] ] ] } }
+]
+}
