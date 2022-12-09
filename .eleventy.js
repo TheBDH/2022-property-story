@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 /** @type {(config: import('@11ty/eleventy/src/UserConfig')) => void} */
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("fonts");
+    eleventyConfig.addPassthroughCopy("images");
     eleventyConfig.addPassthroughCopy("maps/roads.svg");
     eleventyConfig.addPassthroughCopy("*.css");
     eleventyConfig.addPassthroughCopy("jquery-3.6.1.min.js");
