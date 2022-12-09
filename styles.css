@@ -99,8 +99,8 @@ body {
 
 #map-properties path {
   fill: var(--fill, var(--red));
-  stroke: var(--offwhite);
-  stroke-width: 0.2;
+  stroke: var(--stroke, var(--offwhite));
+  stroke-width: var(--stroke-width, 0.2);
 }
 
 .maps {

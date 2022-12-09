@@ -283,7 +283,7 @@
 <script type="module">
     import Color from './js/color.js';
     const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
-    const colors = Object.fromEntries(['red', 'tan'].map((name) => [name, new Color(getCSSVar(name))]));
+    const colors = Object.fromEntries(['red', 'tan', 'offwhite'].map((name) => [name, new Color(getCSSVar(name))]));
     const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -438,8 +438,13 @@
 
       if (stage === -1) {
         $('#first-map').css('--fill', redToTan(frac));
+        const stroke = colors.offwhite.clone();
+        stroke.alpha = 1 - frac;
+        $('#first-map').css('--stroke', stroke);
+        $('#first-map').css('--stroke-width', (1 - frac) * 0.2);
       } else {
         $('#first-map').css('--fill', "var(--tan)");
+        $('#first-map').css('--stroke', "transparent");
       }
     }
 
