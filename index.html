@@ -484,6 +484,14 @@
         $('#first-map').css('--fill', "var(--tan)");
         $('#first-map').css('--stroke', "transparent");
       }
+
+      if (stage < 18) {
+        $('#modern-maps').css('--fill', 'var(--red)');
+      } else if (stage === 18) {
+        $('#modern-maps').css('--fill', redToTan(Math.min(frac * 2, 1)));
+      } else {
+        $('#modern-maps').css('--fill', 'var(--tan)');
+      }
     }
 
     onScroll()
