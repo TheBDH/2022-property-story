@@ -435,4 +435,11 @@ aside h2 {
   width: 100%;
   border-radius: 4px;
   margin-inline: -4px;
+  transition: all 0.2s;
+}
+
+.aside-content .related-article img:hover {
+  filter: brightness(120%);
+  transform: scale(1.025);
+  box-shadow: 5px 5px 20px black, 5px 5px 20px rgba(0, 0, 0, 50%);
 }
