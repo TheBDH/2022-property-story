@@ -297,7 +297,7 @@
       /*  7 */ { id: 'intro-graf5',  anchor: top,    at: bottom },
       /*  8 */ { id: 'intro-graf5',  anchor: center, at: 0.75,   year: 1920  },
       /*  9 */ { id: 'intro-graf6',  anchor: top,    at: bottom },
-      /* 10 */ { id: 'intro-graf6',  anchor: bottom, at: top,    year: 1940  },
+      /* 10 */ { id: 'intro-graf6',  anchor: top,    at: top,    year: 1940  },
       /* 11 */ { id: 'intro-graf7',  anchor: center, at: 0.75   },
       /* 12 */ { id: 'intro-graf7',  anchor: center, at: 0.25,   year: 1960  },
       /* 13 */ { id: 'intro-graf8',  anchor: center, at: center },
@@ -316,20 +316,20 @@
     }
 
     const automations = [
-      { id: 'intro-maps', shown: -1, hidden: 19 },
-      { id: 'map-2022', shown: -1, hidden: 3 },
-      { id: 'map-1770', shown: 4 },
-      { id: 'map-1900', shown: 6 },
-      { id: 'map-onefinancial', shown: 6, hidden: 8 },
-      { id: 'map-1920', shown: 8 },
-      { id: 'map-1940', shown: 10 },
-      { id: 'map-1960', shown: 12 },
-      { id: 'map-1980', shown: 14 },
-      { id: 'map-2000', shown: 16 },
-      { id: 'year', shown: 1, hidden: 19 },
+      { id: 'intro-maps', stages: [-1, 19] },
+      { id: 'map-2022', stages: [-1, 3] },
+      { id: 'map-1770', stages: [4] },
+      { id: 'map-1900', stages: [6] },
+      { id: 'map-onefinancial', stages: [6, 8] },
+      { id: 'map-1920', stages: [8] },
+      { id: 'map-1940', stages: [10] },
+      { id: 'map-1960', stages: [12] },
+      { id: 'map-1980', stages: [14] },
+      { id: 'map-2000', stages: [16] },
+      { id: 'year', stages: [1, 19] },
       { id: 'map-properties', stages: [-1, 18, 20] },
-      { id: 'map-2002', shown: 20 },
-      { id: 'slider-year', shown: 20 },
+      { id: 'map-2002', stages: [20] },
+      { id: 'slider-year', stages: [20] },
     ]
 
     const mapTransforms = [
@@ -362,22 +362,18 @@
 
       $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
 
-      for (const automation of automations) {
-        const el = document.getElementById(automation.id);
-        const stages = automation.stages ?? [automation.shown, automation.hidden];
-        if (stage < stages[0] - 1 || (stages.length % 2 === 0 && stage >= stages[stages.length - 1])) {
-          el.style.opacity = 0;
+      for (const { id, stages } of automations) {
+        const el = document.getElementById(id);
+        const nextStageIdx = stages.findIndex(s => s > stage);
+        if (nextStageIdx === -1) {
+          // past end
+          el.style.opacity = stages.length % 2 === 0 ? 0 : 1;
         } else {
-          for (let i = 0; i < stages.length; i++) {
-            const isShown = i % 2 === 0;
-            if (stage === stages[i] - 1) {
-              el.style.opacity = isShown ? frac : 1 - frac;
-              break;
-            }
-            if (stage === stages[i]) {
-              el.style.opacity = isShown ? 1 : 0;
-              break;
-            }
+          const isShowing = nextStageIdx % 2 === 0;
+          if (stage < stages[nextStageIdx] - 1) {
+            el.style.opacity = isShowing ? 0 : 1;
+          } else {
+            el.style.opacity = isShowing ? frac : 1 - frac;
           }
         }
       }
@@ -413,6 +409,8 @@
 
       if (stages[stage]?.year) {
         $('#year').html(formatYear(stages[stage].year))
+      } else if (stage === 3) {
+        $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
       }
 
       if (stage > mapTransforms[mapTransforms.length - 1].stage) {
@@ -421,32 +419,24 @@
 
       if (stage < 16) {
         $('#map-roads').css('opacity', 0.3);
+      } else if (stage === 17) {
+        $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
+      } else if (stage === 18) {
+        $('#map-roads').css('opacity', 0.15)
+      } else if (stage === 19) {
+        $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
+      } else {
+        $('#map-roads').css('opacity', 0.3);
       }
 
-      switch (stage) {
-      case -1:
-        $('#map-2022').css('--fill', redToTan(frac));
-        break;
-      case 0:
-        // $('h1').css('font-family', 'Redaction'+(Math.floor(frac*7)))
-        break;
-      case 3:
-        $('#year').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
-        break;
-      case 17:
-        $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
-        break;
-      case 18:
-        $('#map-roads').css('opacity', 0.15)
-        break;
-      case 19:
-        $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
-        break;
-      }
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      // you're at the bottom of the page
-      } else if (window.innerHeight + Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) > document.documentElement.offsetHeight - 100) {
-        $('#map-2022').css('--fill', "var(--red)");
+      if (stage === -1) {
+        $('#map-properties').css('--fill', redToTan(frac));
+      } else if (stage < 2) {
+        $('#map-properties').css('--fill', "var(--tan)");
+      } else if (stage === 2) {
+        $('#map-properties').css('--fill', redToTan(1 - frac));
+      } else if (stage > 2) {
+        $('#map-properties').css('--fill', "var(--red)");
       }
     }
 
