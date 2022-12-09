@@ -7,6 +7,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("images");
     eleventyConfig.addPassthroughCopy("maps/roads.svg");
     eleventyConfig.addPassthroughCopy("*.css");
+    eleventyConfig.addPassthroughCopy("js");
     eleventyConfig.addPassthroughCopy("jquery-3.6.1.min.js");
     eleventyConfig.addPassthroughCopy({
         "node_modules/colorjs.io/dist/color.js": "js/color.js",
