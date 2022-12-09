@@ -296,13 +296,15 @@ hr {
   opacity: 0.5;
 }
 
-#year {
+#year-1, #year-2 {
   position: fixed;
   bottom: 10px;
   left: 10px;
   font-size: 2em;
   font-family: Redaction3;
   color: var(--red);
+  transform-origin-y: 50%;
+  backface-visibility: hidden;
 }
 
 a {
