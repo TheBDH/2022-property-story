@@ -17,7 +17,7 @@ module.exports = function (eleventyConfig) {
         if ($('svg').children().length > 1) {
             return $('svg').html();
         }
-        return $('svg').children().toArray().map(c => $(c).html()).join('');
+        return `<g id="map-${name}-raw">${$('svg').children().toArray().map(c => $(c).html()).join('')}</g>`;
     })
     eleventyConfig.addShortcode('separator', (name) => {
         return fs.readFileSync(`./assets/separators/${name}.svg`, 'utf8');
