@@ -45,7 +45,7 @@
         </g>
 
         <g id="modern-maps">
-          <g class="map" style="opacity: 0" id="map-2002">{% include_map '2002' %}</g>
+          <g class="map" id="map-2002">{% include_map '2002' %}</g>
           <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
           <g class="map" style="opacity: 0" id="map-2006">{% include_map '2006' %}</g>
           <g class="map" style="opacity: 0" id="map-2008">{% include_map '2008' %}</g>
@@ -162,8 +162,9 @@
       </div>
     </div>
 
-    <hr>
-
+    <input id="slider" type="range" min="2002" max="2022" value = "2002" step="2">
+    <div id="slider-year" class="year">2002</div>
+    <div id="map-slider" style="height: 90vh"></div>
 
     <div id="main-content">
       {% separator 'top' %}
@@ -269,9 +270,6 @@
       <p>“We have the ability now to basically create a brand new neighborhood out of whole cloth, and that is a rare opportunity,” Steele said. “We feel that we could not have a better partner than we have in Brown.”</p>
       <p>“It is our mutual goal,” Steele said, “to basically make this place better than the way we have found it.”</p>
     </div>
-    <div class="map-slider"> </div>
-    <div id="slider-year" class="year">2002</div>
-    <input id="slider" label = "Range slider from 2002 to 2022" type="range" min="2002" max="2022" value = "2002" step="2">
   </div>
   <footer>
     <span>Copyright © 2022</span>
@@ -308,8 +306,8 @@
       /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
       /* 16 */ { id: 'intro-graf10', anchor: center, at: center, year: 2000  },
       /* 17 */ { id: 'intro-graf10', anchor: bottom, at: center },
-      /* 18 */ { id: 'main-content', anchor: top,    at: 0.25   },
-      /* 19 */ { id: 'main-content', anchor: bottom, at: center },
+      /* 18 */ { id: 'map-slider',   anchor: bottom, at: bottom },
+      /* 19 */ { id: 'main-content', anchor: top,    at: 0.25   },
       /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
     ]
 
@@ -331,9 +329,8 @@
       { id: 'map-2000', stages: [16] },
       { id: 'year-1', stages: [2, 18] },
       { id: 'year-2', stages: [2, 18] },
-      { id: 'map-properties', stages: [-1, 18, 20] },
-      { id: 'map-2002', stages: [20] },
-      { id: 'slider-year', stages: [20] },
+      { id: 'map-properties', stages: [-1, 19] },
+      { id: 'modern-maps', stages: [18, 19] },
     ]
 
     const mapTransforms = [
@@ -342,8 +339,7 @@
       { stage: 6, scale: 1, translate: [40, -5] },
       { stage: 8, scale: 2, translate: [40, -30] },
       { stage: 12, scale: 1.5, translate: [40, -40] },
-      { stage: 17, scale: 1, translate: [0, 0] },
-      { stage: 20, scale: 1.7, translate: [40, -40] },
+      { stage: 19, scale: 1, translate: [0, 0] },
     ]
     const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
     const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
@@ -430,16 +426,12 @@
         $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
       }
 
-      if (stage < 16) {
+      if (stage < 17) {
         $('#map-roads').css('opacity', 0.3);
-      } else if (stage === 17) {
-        $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
       } else if (stage === 18) {
-        $('#map-roads').css('opacity', 0.15)
+        $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
       } else if (stage === 19) {
-        $('#map-roads').css('opacity', 0.3 * (0.5 + frac/2));
-      } else {
-        $('#map-roads').css('opacity', 0.3);
+        $('#map-roads').css('opacity', 0.15)
       }
 
       if (stage === -1) {
