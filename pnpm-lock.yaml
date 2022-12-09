@@ -4,6 +4,7 @@ specifiers:
   '@11ty/eleventy': ^1.0.2
   cheerio: 1.0.0-rc.12
   colorjs.io: ^0.4.2
+  prettier: ^2.8.1
   svgo: ^3.0.2
 
 dependencies:
@@ -13,6 +14,7 @@ dependencies:
 devDependencies:
   '@11ty/eleventy': 1.0.2
   cheerio: 1.0.0-rc.12
+  prettier: 2.8.1
 
 packages:
 
@@ -1608,6 +1610,12 @@ packages:
     dependencies:
       async: 2.6.4
       is-number-like: 1.0.8
+    dev: true
+
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /pretty/2.0.0:

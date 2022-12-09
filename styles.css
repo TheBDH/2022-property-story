@@ -1,10 +1,10 @@
 :root {
-  --red: #E50000;
-  --offwhite: #F5F3EF;
+  --red: #e50000;
+  --offwhite: #f5f3ef;
   --black: #000000;
-  --brown: #8D5124;
-  --offblack: #241B16;
-  --tan: #E3D4BF;
+  --brown: #8d5124;
+  --offblack: #241b16;
+  --tan: #e3d4bf;
 }
 
 @font-face {
@@ -69,15 +69,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #F5F3EF;
-  font-family: Lora, Georgia, 'Times New Roman', Times, serif;
+  background-color: #f5f3ef;
+  font-family: Lora, Georgia, "Times New Roman", Times, serif;
   line-height: 1.3;
   font-size: 1em;
 }
 @media screen and (max-width: 768px) {
   .body {
-      font-size: 2em;
-    }
+    font-size: 2em;
+  }
 }
 
 #intro-section1 {
@@ -114,11 +114,12 @@ body {
   z-index: -1;
 }
 .maps::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   display: block;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   max-height: 100%;
   max-width: 100%;
   aspect-ratio: 0.8943089430895341;
@@ -132,11 +133,14 @@ body {
   height: 100%;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
   font-family: Redaction3, serif;
 }
 
-h1{
+h1 {
   font-family: Redaction3;
   line-height: 5rem;
   font-size: 5rem;
@@ -148,7 +152,7 @@ h1{
     line-height: 3rem;
   }
 }
-h2{
+h2 {
   font-size: 2.2rem;
   text-align: center;
 }
@@ -169,7 +173,8 @@ h2{
 }
 
 .byline {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   justify-content: center;
 }
 .byline a {
@@ -178,16 +183,16 @@ h2{
 }
 @media (max-width: 768px) {
   .byline {
-    margin:auto;
+    margin: auto;
     width: 60vw;
   }
 }
 
-#headline-wrapper{
+#headline-wrapper {
   max-width: 800px;
 }
 
-#byline{
+#byline {
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -195,7 +200,7 @@ h2{
   align-items: center;
 }
 
-#content{
+#content {
   max-width: 650px;
   padding-left: 10vw;
   padding-right: 10vw;
@@ -204,7 +209,7 @@ h2{
   margin: auto;
 }
 
-footer{
+footer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -227,7 +232,6 @@ footer{
   margin-inline: 0.5em;
 }
 
-
 #to-top {
   border-style: none;
   background-color: transparent;
@@ -237,12 +241,12 @@ footer{
   font: inherit;
 }
 
-#to-top:hover{
+#to-top:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
-#logo{
+#logo {
   width: 20vw;
   display: block;
   margin: auto;
@@ -284,10 +288,10 @@ footer{
   mix-blend-mode: difference;
   z-index: 1;
 }
-#debug-overlay ~ * [id^=intro-graf] {
+#debug-overlay ~ * [id^="intro-graf"] {
   position: relative;
 }
-#debug-overlay ~ * [id^=intro-graf]::after {
+#debug-overlay ~ * [id^="intro-graf"]::after {
   content: attr(id);
   position: absolute;
   top: 5px;
@@ -295,7 +299,8 @@ footer{
   opacity: 0.5;
 }
 
-#year-1, #year-2 {
+#year-1,
+#year-2 {
   position: fixed;
   bottom: 10px;
   left: 10px;
@@ -314,7 +319,7 @@ a {
   margin-top: 2em;
   background-color: var(--offwhite);
   color: var(--offblack);
-  padding: 1.5em
+  padding: 1.5em;
 }
 
 .separator {
@@ -332,17 +337,16 @@ a {
 }
 
 #slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
+  -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   height: 10px; /* Specified height */
   background: var(--tan); /* Grey background */
   outline: none; /* Remove outline */
   opacity: 1; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
   margin-top: 10em;
 }
-
 
 #slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
@@ -369,8 +373,10 @@ a {
   color: var(--red);
   width: 100px;
   text-align: center;
-  text-shadow: 2px 0 0 var(--offwhite), -2px 0 0 var(--offwhite), 0 2px 0 var(--offwhite), 0 -2px 0 var(--offwhite),
-               1px 1px var(--offwhite), -1px -1px 0 var(--offwhite), 1px -1px 0 var(--offwhite), -1px 1px 0 var(--offwhite);
+  text-shadow: 2px 0 0 var(--offwhite), -2px 0 0 var(--offwhite),
+    0 2px 0 var(--offwhite), 0 -2px 0 var(--offwhite), 1px 1px var(--offwhite),
+    -1px -1px 0 var(--offwhite), 1px -1px 0 var(--offwhite),
+    -1px 1px 0 var(--offwhite);
 }
 .year span {
   display: inline-block;
@@ -414,7 +420,8 @@ aside h2 {
   margin: 0 auto;
   color: white;
   text-align: left;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.4em;
 }
 

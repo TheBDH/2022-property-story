@@ -7,7 +7,8 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
-    "cheerio": "1.0.0-rc.12"
+    "cheerio": "1.0.0-rc.12",
+    "prettier": "^2.8.1"
   },
   "dependencies": {
     "colorjs.io": "^0.4.2",

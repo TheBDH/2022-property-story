@@ -1,11 +1,21 @@
-import Color from './color.js';
-const getCSSVar = (name) => getComputedStyle(document.documentElement).getPropertyValue('--' + name);
-const colors = Object.fromEntries(['red', 'tan', 'offwhite'].map((name) => [name, new Color(getCSSVar(name))]));
-const redToTan = colors.red.range(colors.tan, { space: 'lab', outputSpace: 'srgb' });
+import Color from "./color.js";
+const getCSSVar = (name) =>
+  getComputedStyle(document.documentElement).getPropertyValue("--" + name);
+const colors = Object.fromEntries(
+  ["red", "tan", "offwhite"].map((name) => [name, new Color(getCSSVar(name))])
+);
+const redToTan = colors.red.range(colors.tan, {
+  space: "lab",
+  outputSpace: "srgb",
+});
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
-const [top, center, bottom] = [0, 0.5, 1]
+const [top, center, bottom] = [0, 0.5, 1];
+
+// prettier-ignore
 const stages = [
   /*  0 */ { id: 'intro-graf1',  anchor: top,    at: top,    year: 2022  },
   /*  1 */ { id: 'hed',          anchor: center, at: center },
@@ -30,27 +40,30 @@ const stages = [
   /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
 ]
 
-const formatYear = year => {
+const formatYear = (year) => {
   const s = year.toString();
-  return s.split('').map(s => `<span>${s}</span>`).join('')
-}
+  return s
+    .split("")
+    .map((s) => `<span>${s}</span>`)
+    .join("");
+};
 
 const automations = [
-  { id: 'intro-maps', stages: [-1, 18] },
-  { id: 'first-map', stages: [-1] },
-  { id: 'map-1770', stages: [4] },
-  { id: 'map-1900', stages: [6] },
-  { id: 'map-one-financial-plaza', stages: [6, 8] },
-  { id: 'map-1920', stages: [8] },
-  { id: 'map-1940', stages: [10] },
-  { id: 'map-1960', stages: [12] },
-  { id: 'map-1980', stages: [14] },
-  { id: 'map-2000', stages: [16] },
-  { id: 'year-1', stages: [2, 18] },
-  { id: 'year-2', stages: [2, 18] },
-  { id: 'map-properties', stages: [-1, 19] },
-  { id: 'modern-maps', stages: [18, 19] },
-]
+  { id: "intro-maps", stages: [-1, 18] },
+  { id: "first-map", stages: [-1] },
+  { id: "map-1770", stages: [4] },
+  { id: "map-1900", stages: [6] },
+  { id: "map-one-financial-plaza", stages: [6, 8] },
+  { id: "map-1920", stages: [8] },
+  { id: "map-1940", stages: [10] },
+  { id: "map-1960", stages: [12] },
+  { id: "map-1980", stages: [14] },
+  { id: "map-2000", stages: [16] },
+  { id: "year-1", stages: [2, 18] },
+  { id: "year-2", stages: [2, 18] },
+  { id: "map-properties", stages: [-1, 19] },
+  { id: "modern-maps", stages: [18, 19] },
+];
 
 const mapTransformsDesktop = [
   { stage: -1, scale: 2, translate: [40, -30] },
@@ -59,7 +72,7 @@ const mapTransformsDesktop = [
   { stage: 8, scale: 2, translate: [40, -30] },
   { stage: 12, scale: 1.5, translate: [40, -40] },
   { stage: 19, scale: 1, translate: [0, 0] },
-]
+];
 const mapTransformsMobile = [
   { stage: -1, scale: 1, translate: [40, -20] },
   { stage: 4, scale: 2, translate: [38, -40] },
@@ -68,32 +81,49 @@ const mapTransformsMobile = [
   { stage: 12, scale: 2, translate: [40, -30] },
   { stage: 14, scale: 1.5, translate: [40, -30] },
   { stage: 19, scale: 1, translate: [0, 0] },
-]
-const reducedMotionTransform = { scale: 0.95, translate: [40, -15] }
-const formatTransform = ({ scale, translate }) => `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
+];
+const reducedMotionTransform = { scale: 0.95, translate: [40, -15] };
+const formatTransform = ({ scale, translate }) =>
+  `scale(${scale}) translate(${translate[0]}, ${translate[1]})`;
 
 const onScroll = () => {
-  const scroll = document.scrollingElement.scrollTop / document.scrollingElement.clientHeight;
+  const scroll =
+    document.scrollingElement.scrollTop /
+    document.scrollingElement.clientHeight;
 
   const stagePositions = stages.map(({ id, anchor, at }) => {
     const el = document.getElementById(id);
-    const anchorPos = el.offsetTop + (el.offsetHeight * anchor);
-    const atPos = document.scrollingElement.scrollTop + (document.scrollingElement.clientHeight * at);
+    const anchorPos = el.offsetTop + el.offsetHeight * anchor;
+    const atPos =
+      document.scrollingElement.scrollTop +
+      document.scrollingElement.clientHeight * at;
     return anchorPos - atPos;
   });
-  const stage = stagePositions.reduce((acc, val, i) => val < 0 ? i : acc, -1);
+  const stage = stagePositions.reduce((acc, val, i) => (val < 0 ? i : acc), -1);
   const pos = stagePositions[stage] ?? -document.scrollingElement.scrollTop;
-  const frac = pos / (pos - (stagePositions[stage + 1] ?? (document.scrollingElement.scrollTop - document.scrollingElement.clientHeight)));
+  const frac =
+    pos /
+    (pos -
+      (stagePositions[stage + 1] ??
+        document.scrollingElement.scrollTop -
+          document.scrollingElement.clientHeight));
   // magic from d3
-  const easeCubic = t => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
-  const interpolate = (from, to) => from + (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
+  const easeCubic = (t) =>
+    ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+  const interpolate = (from, to) =>
+    from +
+    (to - from) * (stages[stage]?.ease === false ? frac : easeCubic(frac));
   const isMobile = window.innerWidth < 768;
 
-  $('#debug-overlay').text(`Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(frac * 100).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`);
+  $("#debug-overlay").text(
+    `Scroll: ${scroll.toFixed(2)} / Stage: ${stage} / Frac: ${(
+      frac * 100
+    ).toFixed(1)}% / Eased: ${interpolate(0, 100).toFixed(1)}%`
+  );
 
   for (const { id, stages } of automations) {
     const el = document.getElementById(id);
-    const nextStageIdx = stages.findIndex(s => s > stage);
+    const nextStageIdx = stages.findIndex((s) => s > stage);
     if (nextStageIdx === -1) {
       // past end
       el.style.opacity = stages.length % 2 === 0 ? 0 : 1;
@@ -110,91 +140,117 @@ const onScroll = () => {
   const mapTransforms = isMobile ? mapTransformsMobile : mapTransformsDesktop;
   for (let i = 0; i < mapTransforms.length; i++) {
     if (prefersReducedMotion) {
-      $('#map-transform-wrapper').attr('transform', formatTransform(reducedMotionTransform));
+      $("#map-transform-wrapper").attr(
+        "transform",
+        formatTransform(reducedMotionTransform)
+      );
       break;
     }
 
     const t = mapTransforms[i];
     if (i === 0 && stage === -1) {
       // $('#map-transform-wrapper').attr('transform', `scale(${t.scale}) translate(${t.translate.join(',')})`)
-      $('#map-transform-wrapper').attr('transform', formatTransform(t));
+      $("#map-transform-wrapper").attr("transform", formatTransform(t));
       break;
     }
     const prev = mapTransforms[i - 1];
     if (stage === t.stage - 1) {
-      $('#map-transform-wrapper').attr('transform', formatTransform({
-        scale: interpolate(prev.scale, t.scale),
-        translate: [
-          interpolate(prev.translate[0], t.translate[0]),
-          interpolate(prev.translate[1], t.translate[1])
-        ]
-      }))
+      $("#map-transform-wrapper").attr(
+        "transform",
+        formatTransform({
+          scale: interpolate(prev.scale, t.scale),
+          translate: [
+            interpolate(prev.translate[0], t.translate[0]),
+            interpolate(prev.translate[1], t.translate[1]),
+          ],
+        })
+      );
       break;
     }
     if (stage === t.stage) {
-      $('#map-transform-wrapper').attr('transform', formatTransform(t));
+      $("#map-transform-wrapper").attr("transform", formatTransform(t));
       break;
     }
   }
 
   if (stage <= 2) {
-    $('#year-1').html(formatYear(2022))
+    $("#year-1").html(formatYear(2022));
   } else if (stage === 3) {
-    $('#year-1').html(formatYear((frac * (1770 - 2022) + 2022).toFixed()))
+    $("#year-1").html(formatYear((frac * (1770 - 2022) + 2022).toFixed()));
   } else if (stage === 4) {
-    $('#year-1').html(formatYear(1770))
+    $("#year-1").html(formatYear(1770));
   } else if (stages[stage + 1]?.year) {
-    $('#year-1')
-    .html(formatYear(stages.slice(0, stage + 1).reverse().find(s => s.year)?.year ?? 1770))
-    .css('transform', `scale(0.67) perspective(150px) translateZ(50px) rotateX(${frac / 2}turn`)
-    $('#year-2')
-    .html(formatYear(stages[stage + 1].year))
-    .css('transform', `scale(0.67) perspective(150px) translateZ(50px) rotateX(${frac / 2 - 0.5}turn`)
+    $("#year-1")
+      .html(
+        formatYear(
+          stages
+            .slice(0, stage + 1)
+            .reverse()
+            .find((s) => s.year)?.year ?? 1770
+        )
+      )
+      .css(
+        "transform",
+        `scale(0.67) perspective(150px) translateZ(50px) rotateX(${
+          frac / 2
+        }turn`
+      );
+    $("#year-2")
+      .html(formatYear(stages[stage + 1].year))
+      .css(
+        "transform",
+        `scale(0.67) perspective(150px) translateZ(50px) rotateX(${
+          frac / 2 - 0.5
+        }turn`
+      );
   }
 
   if (stage > mapTransforms[mapTransforms.length - 1].stage) {
-    $('#map-transform-wrapper').attr('transform', formatTransform(mapTransforms[mapTransforms.length - 1]));
+    $("#map-transform-wrapper").attr(
+      "transform",
+      formatTransform(mapTransforms[mapTransforms.length - 1])
+    );
   }
 
   if (stage < 17) {
-    $('#map-roads').css('opacity', 0.3);
+    $("#map-roads").css("opacity", 0.3);
   } else if (stage === 18) {
-    $('#map-roads').css('opacity', 0.3 * (1 - frac/2))
+    $("#map-roads").css("opacity", 0.3 * (1 - frac / 2));
   } else if (stage === 19) {
-    $('#map-roads').css('opacity', 0.15)
+    $("#map-roads").css("opacity", 0.15);
   }
 
   if (stage === -1) {
-    $('#first-map').css('--fill', redToTan(frac));
+    $("#first-map").css("--fill", redToTan(frac));
     const stroke = colors.offwhite.clone();
     stroke.alpha = 1 - frac;
-    $('#first-map').css('--stroke', stroke);
-    $('#first-map').css('--stroke-width', (1 - frac) * 0.2);
+    $("#first-map").css("--stroke", stroke);
+    $("#first-map").css("--stroke-width", (1 - frac) * 0.2);
   } else {
-    $('#first-map').css('--fill', "var(--tan)");
-    $('#first-map').css('--stroke', "transparent");
+    $("#first-map").css("--fill", "var(--tan)");
+    $("#first-map").css("--stroke", "transparent");
   }
 
   if (stage < 18) {
-    $('#modern-maps').css('--fill', 'var(--red)');
+    $("#modern-maps").css("--fill", "var(--red)");
   } else if (stage === 18) {
-    $('#modern-maps').css('--fill', redToTan(Math.min(frac * 2, 1)));
+    $("#modern-maps").css("--fill", redToTan(Math.min(frac * 2, 1)));
   } else {
-    $('#modern-maps').css('--fill', 'var(--tan)');
+    $("#modern-maps").css("--fill", "var(--tan)");
   }
-}
+};
 
-onScroll()
-document.addEventListener('scroll', onScroll)
+onScroll();
+document.addEventListener("scroll", onScroll);
 $("#to-top").click(function () {
-  $("html, body").animate({scrollTop: 0}, 1000);
+  $("html, body").animate({ scrollTop: 0 }, 1000);
 });
 
 var slider = document.getElementById("slider");
 var output = document.getElementById("slider-year");
 
-slider.oninput = function() {
+slider.oninput = function () {
   output.innerHTML = formatYear(this.value);
-  $(`#modern-maps .map`).css('opacity', 0)
-  $(`#map-${this.value}`).css('opacity', 1)
-}
+  $(`#modern-maps .map`).css("opacity", 0);
+  $(`#map-${this.value}`).css("opacity", 1);
+};
