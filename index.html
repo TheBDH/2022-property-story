@@ -39,21 +39,23 @@
           <g class="map" id="map-1940">{% include_map '1940' %}</g>
           <g class="map" id="map-1960">{% include_map '1960' %}</g>
           <g class="map" id="map-1980">{% include_map '1980' %}</g>
-          {# <g class="map" id="map-2000">{# include_map '2000' #}</g> #}
+          <g class="map" id="map-2000">{% include_map '2000' %}</g>
           <g class="map" id="map-onefinancial">{% include_map 'one-financial-plaza' %}</g>
         </g>
 
-        <g class="map" style="opacity: 0" id="map-2002">{% include_map '2002' %}</g>
-        <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
-        <g class="map" style="opacity: 0" id="map-2006">{% include_map '2006' %}</g>
-        <g class="map" style="opacity: 0" id="map-2008">{% include_map '2008' %}</g>
-        <g class="map" style="opacity: 0" id="map-2010">{% include_map '2010' %}</g>
-        <g class="map" style="opacity: 0" id="map-2012">{% include_map '2012' %}</g>
-        <g class="map" style="opacity: 0" id="map-2014">{% include_map '2014' %}</g>
-        <g class="map" style="opacity: 0" id="map-2016">{% include_map '2016' %}</g>
-        <g class="map" style="opacity: 0" id="map-2018">{% include_map '2018' %}</g>
-        <g class="map" style="opacity: 0" id="map-2020">{% include_map '2020' %}</g>
-        <g class="map" style="opacity: 0" id="map-2022">{% include_map '2022' %}</g>
+        <g id="modern-maps">
+          <g class="map" style="opacity: 0" id="map-2002">{% include_map '2002' %}</g>
+          <g class="map" style="opacity: 0" id="map-2004">{% include_map '2004' %}</g>
+          <g class="map" style="opacity: 0" id="map-2006">{% include_map '2006' %}</g>
+          <g class="map" style="opacity: 0" id="map-2008">{% include_map '2008' %}</g>
+          <g class="map" style="opacity: 0" id="map-2010">{% include_map '2010' %}</g>
+          <g class="map" style="opacity: 0" id="map-2012">{% include_map '2012' %}</g>
+          <g class="map" style="opacity: 0" id="map-2014">{% include_map '2014' %}</g>
+          <g class="map" style="opacity: 0" id="map-2016">{% include_map '2016' %}</g>
+          <g class="map" style="opacity: 0" id="map-2018">{% include_map '2018' %}</g>
+          <g class="map" style="opacity: 0" id="map-2020">{% include_map '2020' %}</g>
+          <g class="map" style="opacity: 0" id="map-2022">{% include_map '2022' %}</g>
+        </g>
       </g>
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade)" /> -->
         <!-- <rect x="0" y="0" width="314.1592653589905" height="139.13084045264986" fill="url(#fade-vertical)" /> -->
@@ -451,8 +453,7 @@
 
     slider.oninput = function() {
       output.innerHTML = formatYear(this.value);
-      $(`#map-${(parseInt(this.value)-2)}`).css('opacity', 0)
-      $(`#map-${(parseInt(this.value)+2)}`).css('opacity', 0)
+      $(`#modern-maps .map`).css('opacity', 0)
       $(`#map-${this.value}`).css('opacity', 1)
     }
   </script>
