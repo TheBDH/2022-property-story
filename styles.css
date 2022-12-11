@@ -8,44 +8,8 @@
 }
 
 @font-face {
-  font-family: Redaction0;
-  src: url(./fonts/Redaction-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction1;
-  src: url(./fonts/Redaction_10-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction2;
-  src: url(./fonts/Redaction_20-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
   font-family: Redaction3;
   src: url(./fonts/Redaction_35-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction4;
-  src: url(./fonts/Redaction_50-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction5;
-  src: url(./fonts/Redaction_70-Italic.woff2);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Redaction6;
-  src: url(./fonts/Redaction_100-Italic.woff2);
   font-weight: bold;
 }
 
