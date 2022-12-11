@@ -278,7 +278,10 @@
 
         <div class="over-map-in">TKTKTK TKTKTK TKTKTK</div>
       </div>
-        <h3>Drag the handle below to see Brown's property holdings from 2002 to 2022.</h3>
+      <h3>
+        Drag the handle below to see Brown's property holdings from 2002 to
+        2022.
+      </h3>
       <input
         id="slider"
         type="range"
@@ -767,12 +770,22 @@
 
             <g id="intro-maps">
               <g class="map" id="map-1770">{% include_map '1770' %}</g>
+              <g class="map" id="map-1770-1900">
+                {% include_map '1770-1900' %}
+              </g>
               <g class="map" id="map-1900">{% include_map '1900' %}</g>
               <g class="map" id="map-1920">{% include_map '1920' %}</g>
-              <g class="map" id="map-1940">{% include_map '1940' %}</g>
+              <g class="map" id="map-1940">
+                {% include_map '1940' %}{% include_map '1940-135-angell' %}
+              </g>
               <g class="map" id="map-1960">{% include_map '1960' %}</g>
-              <g class="map" id="map-1980">{% include_map '1980' %}</g>
-              <g class="map" id="map-2000">{% include_map '2000' %}</g>
+              <g class="map" id="map-1980">
+                {% include_map '1980' %}{% include_map '1980-195-angell' %}
+              </g>
+              <g class="map" id="map-2000">
+                {% include_map '2000' %}{% include_map '2000-128-southmain' %}
+                {% include_map '2000-hoppin'%}{% include_map '1990-142-angell'%}
+              </g>
               <g class="map" id="map-one-financial-plaza">
                 {% include_map 'one-financial-plaza' %}
               </g>

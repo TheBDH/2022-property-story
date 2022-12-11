@@ -52,6 +52,7 @@ const automations = [
   { id: "intro-maps", stages: [-1, 18] },
   { id: "first-map", stages: [-1] },
   { id: "map-1770", stages: [4] },
+  { id: "map-1770-1900", stages: [4, 6] },
   { id: "map-1900", stages: [6] },
   { id: "map-one-financial-plaza", stages: [6, 8] },
   { id: "map-1920", stages: [8] },
