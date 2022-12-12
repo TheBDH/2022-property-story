@@ -315,6 +315,8 @@ a {
   opacity: 1; /* Set transparency (for mouse-over effects on hover) */
   transition: opacity 0.2s;
   margin-top: 2em;
+  width: 100%;
+  border-radius: 1000px;
 }
 
 #slider::-webkit-slider-thumb {

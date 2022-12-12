@@ -281,28 +281,29 @@
           that some were sold in that period.
         </p>
       </div>
-      <h3
-        style="
-          margin-top: 2em;
-          padding: 0.5em 0.5em 0.3em;
-          background: var(--offwhite);
-          border-radius: 0.5em;
-          border: 2px solid rgba(0, 0, 0, 0.1);
-        "
-      >
-        Drag the handle below to see Brown's property holdings from 2002 to
-        2022.
-      </h3>
-      <input
-        id="slider"
-        type="range"
-        min="2002"
-        max="2022"
-        value="2002"
-        step="2"
-      />
-      <div id="slider-year" class="year">2002</div>
-      <div id="map-slider" style="height: 90vh"></div>
+      <div id="map-slider" style="height: 110vh">
+        <h3
+          style="
+            margin-top: 2em;
+            padding: 0.5em 0.5em 0.3em;
+            background: var(--offwhite);
+            border-radius: 0.5em;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+          "
+        >
+          Drag the handle below to see Brown's property holdings from 2002 to
+          2022.
+        </h3>
+        <input
+          id="slider"
+          type="range"
+          min="2002"
+          max="2022"
+          value="2002"
+          step="2"
+        />
+        <div id="slider-year" class="year">2002</div>
+      </div>
 
       <div id="main-content">
         {% separator 'top' %}

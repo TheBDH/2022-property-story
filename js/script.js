@@ -35,9 +35,10 @@ const stages = [
   /* 15 */ { id: 'intro-graf9',  anchor: center, at: center },
   /* 16 */ { id: 'intro-graf10', anchor: center, at: center, year: 2000  },
   /* 17 */ { id: 'intro-graf10', anchor: bottom, at: center },
-  /* 18 */ { id: 'map-slider',   anchor: bottom, at: bottom },
-  /* 19 */ { id: 'main-content', anchor: top,    at: 0.25   },
-  /* 20 */ { id: 'body',         anchor: bottom, at: bottom },
+  /* 18 */ { id: 'map-slider',   anchor: top,    at: top    },
+  /* 19 */ { id: 'map-slider',   anchor: bottom, at: bottom },
+  /* 20 */ { id: 'main-content', anchor: top,    at: 0.25   },
+  /* 21 */ { id: 'body',         anchor: bottom, at: bottom },
 ]
 
 const formatYear = (year) => {
@@ -63,8 +64,8 @@ const automations = [
   { id: "map-2000", stages: [16] },
   { id: "year-1", stages: [2, 18] },
   { id: "year-2", stages: [2, 18] },
-  { id: "map-properties", stages: [-1, 19] },
-  { id: "modern-maps", stages: [18, 19] },
+  { id: "map-properties", stages: [-1, 20] },
+  { id: "modern-maps", stages: [18] },
 ];
 
 const mapTransformsDesktop = [
@@ -73,7 +74,7 @@ const mapTransformsDesktop = [
   { stage: 6, scale: 1, translate: [40, -5] },
   { stage: 8, scale: 2, translate: [40, -30] },
   { stage: 12, scale: 1.5, translate: [40, -40] },
-  { stage: 19, scale: 1, translate: [0, 0] },
+  { stage: 20, scale: 1, translate: [0, 0] },
 ];
 const mapTransformsMobile = [
   { stage: -1, scale: 1, translate: [40, -20] },
@@ -82,7 +83,7 @@ const mapTransformsMobile = [
   { stage: 8, scale: 2, translate: [40, -30] },
   { stage: 12, scale: 2, translate: [40, -30] },
   { stage: 14, scale: 1.5, translate: [40, -30] },
-  { stage: 19, scale: 1, translate: [0, 0] },
+  { stage: 20, scale: 1, translate: [0, 0] },
 ];
 const reducedMotionTransform = { scale: 0.95, translate: [40, -15] };
 const formatTransform = ({ scale, translate }) =>
@@ -215,9 +216,9 @@ const onScroll = () => {
 
   if (stage < 17) {
     $("#map-roads").css("opacity", 0.3);
-  } else if (stage === 18) {
-    $("#map-roads").css("opacity", 0.3 * (1 - frac / 2));
   } else if (stage === 19) {
+    $("#map-roads").css("opacity", 0.3 * (1 - frac / 2));
+  } else if (stage === 20) {
     $("#map-roads").css("opacity", 0.15);
   }
 
@@ -232,9 +233,9 @@ const onScroll = () => {
     $("#first-map").css("--stroke", "transparent");
   }
 
-  if (stage < 18) {
+  if (stage < 19) {
     $("#modern-maps").css("--fill", "var(--red)");
-  } else if (stage === 18) {
+  } else if (stage === 19) {
     $("#modern-maps").css("--fill", redToTan(Math.min(frac * 2, 1)));
   } else {
     $("#modern-maps").css("--fill", "var(--tan)");
