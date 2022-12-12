@@ -171,7 +171,6 @@ const onScroll = () => {
     }
     if (stage >= t.stage) {
       $("#map-transform-wrapper").attr("transform", formatTransform(t));
-      break;
     }
   }
 
