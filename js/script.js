@@ -169,7 +169,7 @@ const onScroll = () => {
       );
       break;
     }
-    if (stage === t.stage) {
+    if (stage >= t.stage) {
       $("#map-transform-wrapper").attr("transform", formatTransform(t));
       break;
     }
@@ -243,6 +243,7 @@ const onScroll = () => {
 };
 
 onScroll();
+setTimeout(onScroll, 200);
 document.addEventListener("scroll", onScroll);
 $("#to-top").click(function () {
   $("html, body").animate({ scrollTop: 0 }, 1000);
