@@ -13,7 +13,7 @@ module.exports = function (eleventyConfig) {
     "node_modules/colorjs.io/dist/color.js": "js/color.js",
   });
   eleventyConfig.addShortcode("include_map", (name) => {
-    const source = fs.readFileSync(`./maps/${name}.svg`, "utf8");
+    const source = fs.readFileSync(`./assets/maps/${name}.svg`, "utf8");
     const $ = cheerio.load(source);
     if (
       $("svg").children().length > 1 ||
