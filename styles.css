@@ -428,14 +428,18 @@ aside h2 {
 }
 
 figure {
-  margin-inline: -2em;
+  float: right;
+  margin-left: 1.5em;
+  margin-right: -2em;
+  margin-block: 0;
+  max-width: 300px;
 }
 figure img {
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 0.3em;
 }
 figcaption {
-  margin-inline: 1em;
+  margin-inline: 0.25em;
   font-size: 0.8em;
   text-align: justify;
 }
