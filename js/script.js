@@ -245,6 +245,7 @@ const onScroll = () => {
 onScroll();
 setTimeout(onScroll, 200);
 document.addEventListener("scroll", onScroll);
+matchMedia("(min-width: 768px)").addEventListener("change", onScroll);
 $("#to-top").click(function () {
   $("html, body").animate({ scrollTop: 0 }, 1000);
 });
