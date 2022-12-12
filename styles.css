@@ -431,8 +431,9 @@ figure img {
   border-radius: 10px;
 }
 figcaption {
-  margin-inline: 3.3333em;
+  margin-inline: 1em;
   font-size: 0.8em;
+  text-align: justify;
 }
 
 figcaption cite {
