@@ -38,7 +38,7 @@ module.exports = function (eleventyConfig) {
       $("svg").children().length > 1 ||
       $("svg > :first-child")[0].name !== "g"
     ) {
-      return $("svg").html();
+      return `<g id="map-${name}-raw">${$("svg").html()}</g>`;
     }
     return `<g id="map-${name}-raw">${$("svg")
       .children()
