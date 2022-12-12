@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("maps/roads.svg");
+  eleventyConfig.addPassthroughCopy("assets/maps/roads.svg");
   eleventyConfig.addPassthroughCopy("*.css");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("jquery-3.6.1.min.js");
