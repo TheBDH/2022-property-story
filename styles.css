@@ -409,10 +409,14 @@ aside h2 {
   text-decoration: none;
 }
 
+.aside-content .related-article picture {
+  width: 100%;
+}
 .aside-content .related-article img {
   width: 100%;
-  aspect-ratio: 1.25;
+  height: auto;
   border-radius: 4px;
+  aspect-ratio: 1.25;
   margin-inline: -4px;
   transition: all 0.2s;
 }
