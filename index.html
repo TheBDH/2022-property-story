@@ -41,8 +41,24 @@
             University off College Hill and into downtown.
           </p>
           <p>But the campus wasn’t always so expansive.</p>
+          <p
+            style="
+              text-align: center;
+              font-weight: bold;
+              margin-bottom: 0;
+              margin-top: 2em;
+            "
+            class="js-only"
+          >
+            &darr; SCROLL &darr;
+          </p>
         </div>
-        <p style="text-align: center">&darr; SCROLL &darr;</p>
+        <p id="enableJS">
+          Please enable JavaScript and reload this page for the best experience.
+        </p>
+        <script>
+          enableJS.remove();
+        </script>
       </div>
     </div>
 
@@ -807,31 +823,58 @@
       <button id="to-top">Back to top</button>
     </footer>
 
+    <noscript>
+      <style>
+        .map {
+          --fill: var(--tan);
+          opacity: 0.5 !important;
+        }
+        #map-roads {
+          opacity: 0.15 !important;
+        }
+        .over-map {
+          margin-top: 2em !important;
+          background: transparent;
+          color: inherit;
+        }
+        .over-map a {
+          color: inherit;
+        }
+        .js-only {
+          display: none;
+        }
+      </style>
+    </noscript>
+
     <div class="maps">
       <svg
         viewBox="0 0 314.1592653589905 139.13084045264986"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
-        <g id="map-transform-wrapper" style="transform-origin: center">
+        <g
+          id="map-transform-wrapper"
+          style="transform-origin: center"
+          transform="scale(2) translate(40, -30)"
+        >
           <image
             id="map-roads"
             xlink:href="assets/maps/roads.svg"
-            opacity="30%"
             width="314.1592653589905"
             height="160.21752962021856"
             x="0"
             y="0"
+            style="opacity: 0.3"
           />
           <g
             id="map-properties"
             transform="translate(-142.92036732050474, -33.879346293600975)"
           >
-            <g class="map" style="opacity: 0" id="first-map">
+            <g class="map" style="opacity: 1" id="first-map">
               <use href="#map-2022-raw" />
             </g>
 
-            <g id="intro-maps">
+            <g id="intro-maps" style="opacity: 0">
               <g class="map" id="map-1770">{% include_map '1770' %}</g>
               <g class="map" id="map-1770-1900">
                 {% include_map '1770-1900' %}
@@ -853,7 +896,7 @@
               <g class="map" id="map-2000">{% include_map '2000' %}</g>
             </g>
 
-            <g id="modern-maps">
+            <g id="modern-maps" style="opacity: 0">
               <g class="map" id="map-2002">{% include_map '2002' %}</g>
               <g class="map" style="opacity: 0" id="map-2004">
                 {% include_map '2004' %}

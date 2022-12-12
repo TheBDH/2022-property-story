@@ -51,7 +51,7 @@ body {
   margin: auto;
 }
 #intro-graf1 {
-  margin-top: 40vh !important;
+  margin-top: 40vh;
 }
 @media (max-width: 768px) {
   #intro-graf1 {

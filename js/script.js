@@ -224,13 +224,13 @@ const onScroll = () => {
   }
 
   if (stage === -1) {
-    $("#first-map").css("--fill", redToTan(frac)).css("fill", redToTan(frac));
+    $("#first-map").css("--fill", redToTan(frac));
     const stroke = colors.offwhite.clone();
     stroke.alpha = 1 - frac;
     $("#first-map").css("--stroke", stroke);
     $("#first-map").css("--stroke-width", (1 - frac) * 0.2);
   } else {
-    $("#first-map").css("--fill", "var(--tan)").css("fill", "var(--tan)");
+    $("#first-map").css("--fill", "var(--tan)");
     $("#first-map").css("--stroke", "transparent");
   }
 
