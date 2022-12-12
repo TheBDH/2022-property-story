@@ -261,7 +261,7 @@ footer {
   position: relative;
 }
 #debug-overlay ~ * [id^="intro-graf"]::after {
-  content: attr(id);
+  content:;
   position: absolute;
   top: 5px;
   right: 5px;
