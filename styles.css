@@ -432,6 +432,10 @@ figure img {
 }
 figcaption {
   margin-inline: 3.3333em;
-  font-size: 0.6em;
-  text-align: right;
+  font-size: 0.8em;
+}
+
+figcaption cite {
+  display: inline-block;
+  font-size: 0.75em;
 }
