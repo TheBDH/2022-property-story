@@ -419,3 +419,16 @@ aside h2 {
   transform: scale(1.025);
   box-shadow: 5px 5px 20px black, 5px 5px 20px rgba(0, 0, 0, 50%);
 }
+
+figure {
+  margin-inline: -2em;
+}
+figure img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+figcaption {
+  margin-inline: 3.3333em;
+  font-size: 0.6em;
+  text-align: right;
+}
