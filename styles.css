@@ -219,6 +219,7 @@ footer {
   width: 20vw;
   display: block;
   margin: auto;
+  margin-top: 2em;
 }
 @media (max-width: 768px) {
   #logo {
