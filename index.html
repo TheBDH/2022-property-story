@@ -185,7 +185,7 @@ If you have a correction, addition or knowledge of when Brown acquired certain p
         </p>
       </div>
 
-      <div class="over-map" id="intro-graf10">
+      <div class="over-map" id="intro-graf10" style="visibility: hidden">
         <p>
           In the 2000s, Brown began a conscious effort to expand off College Hill. In President Ruth J. Simmons’s
           <a href="https://www.brown.edu/web/pae/plan.html"
@@ -627,18 +627,28 @@ If you have a correction, addition or knowledge of when Brown acquired certain p
               <g class="map" id="map-1770-1900">
                 {% include_map '1770-1900' %}
               </g>
-              <g class="map" id="map-1900">{% include_map '1900' %}</g>
+              <g class="map" id="map-1900">
+                {% include_map '1900' %}{% include_map '1900-additional' %}
+              </g>
               <g class="map" id="map-1920">{% include_map '1920' %}</g>
               <g class="map" id="map-1940">
-                {% include_map '1940' %}{% include_map '1940-135-angell' %}
+                {% include_map '1940' %} {% include_map '1940-additional' %} {%
+                include_map '1940-135-angell' %}
               </g>
-              <g class="map" id="map-1960">{% include_map '1960' %}</g>
+              <g class="map" id="map-1940-1980">
+                {% include_map '1940-1980' %}
+              </g>
+              <g class="map" id="map-1960">
+                {% include_map '1960' %}{% include_map '1960-additional' %}
+              </g>
               <g class="map" id="map-1980">
-                {% include_map '1980' %}{% include_map '1980-195-angell' %}
+                {% include_map '1980-2000' %}{% include_map '1980-195-angell' %}
+                {% include_map '1980' %}
               </g>
               <g class="map" id="map-2000">
                 {% include_map '2000' %}{% include_map '2000-128-southmain' %}
                 {% include_map '2000-hoppin'%}{% include_map '1990-142-angell'%}
+                {% include_map '2000-additional' %}
               </g>
               <g class="map" id="map-one-financial-plaza">
                 {% include_map 'one-financial-plaza' %}
