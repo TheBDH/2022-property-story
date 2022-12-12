@@ -362,6 +362,7 @@ aside {
   position: relative;
   background: var(--offblack);
   padding: 1em;
+  margin-block: 3em;
 }
 
 @supports (-webkit-backdrop-filter: invert()) {
