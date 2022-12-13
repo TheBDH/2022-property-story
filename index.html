@@ -56,8 +56,35 @@
         <p id="enableJS">
           Please enable JavaScript and reload this page for the best experience.
         </p>
+
         <script>
           enableJS.remove();
+          const userAgent = navigator.userAgent;
+
+          if (
+            userAgent.indexOf("Safari") > -1 &&
+            userAgent.indexOf("Chrome") === -1
+          ) {
+            if (userAgent.indexOf("Version/") > -1) {
+              const safariVersion = parseInt(
+                userAgent.split("Version/")[1].split(" ")[0].split(".")[0]
+              );
+              if (safariVersion <= 14) {
+                document.write(/* HTML */ `
+                  <div
+                    class="over-map"
+                    style="background: #7e0101; font-weight: bold; margin-top: 10vh !important; margin-bottom: 10vh;"
+                  >
+                    <p>
+                      Unfortunately, this interactive does not work on Safari 14
+                      or older. Please update your version of Safari or use a
+                      different browser.
+                    </p>
+                  </div>
+                `);
+              }
+            }
+          }
         </script>
       </div>
     </div>

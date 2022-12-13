@@ -55,7 +55,7 @@ body {
   margin-bottom: 10vh;
 }
 @media (max-width: 768px) {
-  #intro-graf1 {
+  #intro-section1 .over-map {
     margin-top: 30vh !important;
     margin-left: 1em;
     margin-right: 1em;
