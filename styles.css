@@ -52,6 +52,7 @@ body {
 }
 #intro-graf1 {
   margin-top: 40vh;
+  margin-bottom: 10vh;
 }
 @media (max-width: 768px) {
   #intro-graf1 {
@@ -61,7 +62,7 @@ body {
   }
 }
 
-#map-properties path {
+.map-content path {
   fill: var(--fill, var(--red));
   stroke: var(--stroke, var(--offwhite));
   stroke-width: var(--stroke-width, 0.2);
@@ -448,4 +449,8 @@ figcaption {
 figcaption cite {
   display: inline-block;
   font-size: 0.75em;
+}
+
+figcaption cite a {
+  color: inherit;
 }
