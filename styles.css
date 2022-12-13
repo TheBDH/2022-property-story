@@ -445,12 +445,25 @@ figcaption {
   font-size: 0.8em;
   text-align: justify;
 }
-
 figcaption cite {
   display: inline-block;
   font-size: 0.75em;
 }
-
 figcaption cite a {
   color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  figure {
+    float: none;
+    margin-inline: -10vw;
+    margin-block: 1em;
+    max-width: none;
+  }
+  figure img {
+    border-radius: 0;
+  }
+  figcaption {
+    margin-inline: 1.5em;
+  }
 }
