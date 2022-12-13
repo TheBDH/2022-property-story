@@ -223,7 +223,7 @@ const onScroll = () => {
     $("#map-roads").css("opacity", 0.15);
   }
 
-  if (stage === -1) {
+  if (stage === -1 && !isMobile) {
     $("#first-map").css("--fill", redToTan(frac));
     const stroke = colors.offwhite.clone();
     stroke.alpha = 1 - frac;
